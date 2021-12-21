@@ -13,7 +13,7 @@ pre code {
   white-space: inherit;
 }
 
-.caution {
+#introduction > div {
   border: 4px #096B7263;
   border-style: dashed solid;
   padding: 1em;
@@ -28,7 +28,7 @@ pre code {
   background-image: url("fig/caution.png");
 }
 
-p.flushright{
+#introduction > div > p.flushright{
   text-align: right;
   padding-right: 5em;
 }
