@@ -7,17 +7,23 @@ site: bookdown::bookdown_site
 
 # Introduction
 
-**2021秋 ｜ 大数据分析统计基础 ｜ 第七组 Presentation**
+```{=html}
+<div class="caution">
+<strong><big><big><big> 大数据分析统计基础｜第七组｜Presentation </big></big></big></strong>
 
-<br>
+<br><br>
 
-**Our Presentation Homepage 👇**
-
--   [https://tuozhenliu.github.io/Advanced-Visualiztion](https://tuozhenliu.github.io/Advanced-Visualiztion/index.html){.uri}
-
--   powered by *bookdown* and *github pages*
-
--   欢迎访问交流\^\^
+<p><strong><big>&nbsp&nbsp&nbsp&nbsp Our Presentation Homepage 👇</big></strong> 
+<br><br>
+<a href= "https://tuozhenliu.github.io/Advanced-Visualiztion" target="_blank">&nbsp&nbsp&nbsp&nbsp 🏠 <strong> https://tuozhenliu.github.io/Advanced-Visualiztion </strong></a>
+<br><br>
+&nbsp&nbsp&nbsp&nbsp 🛠 Powered by <strong>bookdown</strong> and <strong>github pages</strong>
+<br><br>
+&nbsp&nbsp&nbsp&nbsp 📮 <strong>欢迎访问交流^^</strong>
+</p>
+<p class="flushright"><strong>&mdash; 刘拓臻, 郑恩昱, 戴玥琨</strong></p>
+</div>
+```
 
 <br>
 
