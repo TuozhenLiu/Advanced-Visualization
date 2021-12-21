@@ -1,0 +1,30 @@
+{
+    "id": "850B9EAA",
+    "path": "~/Desktop/CUFE/大数据分析统计基础/Pre/bookdown/05-Project-Demo.Rmd",
+    "project_path": "05-Project-Demo.Rmd",
+    "type": "r_markdown",
+    "hash": "1869266037",
+    "contents": "",
+    "dirty": false,
+    "created": 1639727648032.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "18,24",
+        "scrollLine": "0",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualModeLocation": "375:61"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1640055361,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1640055361489,
+    "read_only": false,
+    "read_only_alternatives": []
+}

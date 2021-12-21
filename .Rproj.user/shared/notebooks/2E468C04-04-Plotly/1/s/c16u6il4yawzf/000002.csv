@@ -1,0 +1,52 @@
+"0","library(plotly)
+"
+"2","Warning:"
+"2"," package ‘plotly’ was built under R version 4.1.1
+"
+"2","Loading required package: ggplot2
+"
+"2","Warning:"
+"2"," package ‘ggplot2’ was built under R version 4.1.1
+"
+"2","Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+"
+"2","
+Attaching package: ‘plotly’
+
+"
+"2","The following object is masked from ‘package:ggplot2’:
+
+    last_plot
+
+"
+"2","The following object is masked from ‘package:stats’:
+
+    filter
+
+"
+"2","The following object is masked from ‘package:graphics’:
+
+    layout
+
+"
+"0","library(dplyr)"
+"2","
+Attaching package: ‘dplyr’
+
+"
+"2","The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"
+"0","library(htmlwidgets)"
+"2","Warning:"
+"2"," package ‘htmlwidgets’ was built under R version 4.1.1
+"

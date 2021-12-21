@@ -1,0 +1,8 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">高级统计绘图</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Contact us</a></li>
