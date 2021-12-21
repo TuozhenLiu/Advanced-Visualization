@@ -1,0 +1,11 @@
+{
+  "backgroundColor": "black",
+  "textStyle": {
+    "color": "white"
+  },
+  "legend": {
+    "textStyle": {
+    "color": "white"
+    }
+  }
+}
