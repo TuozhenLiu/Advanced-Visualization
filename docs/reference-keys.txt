@@ -6,7 +6,12 @@ ggplot2
 时间序列图
 图形标注
 advanced-graphics
-地图
+maps包
+世界地图
+美国地图
+中国地图
+remap包
+地图可视化
 plotly
 overview
 plotly-pipeline

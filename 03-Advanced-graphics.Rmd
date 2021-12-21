@@ -1,7 +1,336 @@
 # Advanced-graphics
 
-## 地图
+地图毫无疑问是展示地理信息数据时最直观的工具，尤其是当地图和统计量结合时，其功效则会进一步加强。地理信息系统(GIS)已经成为研究空间和地理数据的热门工具，地图的应用也是屡见不鲜。地图的本质是多边形，而多边形的边界则由地理经纬度数据确定。
 
-地图毫无疑问是展示地理信息数据时最直观的工具，尤其是当地图和统计量结合时，其功效则会进一步加强。在本书的第一章中曾经提到过John Snow的地图，注意图中不仅标示出了霍乱发生的地点，每个地点的死亡人数也用点的数目标示了出来。历史上还有不少类似的使用地图的例子，而在今天，地理信息系统(GIS)已经成为研究空间和地理数据的热门工具，地图的应用也是屡见不鲜。
+## maps包
+R中的附加包 maps 是目前比较完善的地图程序包之一，maps包中核心的函数为`map()`，该函数的两个主要参数为地图数据库`database`和地图区域`region`，地图数据库中包含了所有区域的经纬度数据以及相应的区域名称，在指定一个数据库和一系列区域名称之后，这些区域的地图便可由`map()`生成。  
 
-地图的本质是多边形，而多边形的边界则由地理经纬度数据确定。R中的附加包 maps (Brownrigg，2010)是目前比较完善的地图程序包之一，因此本节主要介绍该程序包。
+```{r,eval=FALSE, message=TRUE}
+library(maps)
+usage(map, w = 0.8)
+map(
+  database = "world", regions = ".", exact = FALSE,
+  boundary = TRUE, interior = TRUE, projection = "", parameters = NULL,
+  orientation = NULL, fill = FALSE, col = 1, plot = TRUE,
+  add = FALSE, namesonly = FALSE, xlim = NULL, ylim = NULL,
+  wrap = FALSE, resolution = if (plot) 1 else 0, type = "l",
+  bg = par("bg"), mar = c(4.1, 4.1, par("mar")[3], 0.1),
+  border = 0.01, ...
+)
+```
+
+### 世界地图
+通过运行如下代码得到世界地图。maps包里面还包括了美国、新西兰、意大利等国的地图。
+```{r}
+library(maps)
+par(family = "STKaiti")
+map("world", fill = TRUE, col = rainbow(200), ylim = c(-60, 90), mar = c(0, 0, 0, 0))
+title("世界地图") # 添加标题
+```
+
+### 美国地图
+```{r}
+map("state",
+  fill = TRUE, col = rainbow(209),
+  mar = c(0, 0, 2, 0)
+)
+par(family = "STKaiti")
+title("美国地图")
+```
+
+可以根据需要绘制某国地图或者美国某几个州的地图，只需在map()函数中添加选项例如`region = c('new york', 'new jersey', 'penn')` 即可。 
+```{r}
+map("state",
+  region = c("new york", "new jersey", "penn"),
+  fill = TRUE, col = rainbow(3), mar = c(2, 3, 4, 3)
+)
+par(family = "STKaiti")
+title("美国三州地图")
+```
+
+## 中国地图
+在国家基础地理信息中心的网站上提供了免费的GIS数据下载，里面包括了国界与省界数据，使用R的`maptools::readShapePoly`或`rgdal::readOGR`可以读取shp文件。
+```{r results='hide', message=FALSE, warning=FALSE}
+library(maptools)
+library(rgdal)
+china <- readOGR("./china/bou2_4p.shp")
+china@data$NAME <- iconv(china@data$NAME, "GBK", "UTF-8")
+```
+
+该数据包含了中国925个地区的的面积、周长、编号、行政区名称等信息。
+```{r}
+str(china@data)
+```
+
+在绘制地图时，每一个省市自治区或岛屿都是用一个多边形来表示的。 GIS 数据提供了每一个行政区其多边形逐点的坐标，然后 R 通过顺次连接这些坐标，就绘制出了一个多边形区域。
+```{r}
+plot(china)
+par(family = "STKaiti")
+title("中国地图")
+```
+
+plot命令中的col参数在本例中应该是一个长度为 925 的向量，其第 i 个分量的取值就代表了地图中第 i 个多边形的颜色。
+```{r}
+plot(china, col = gray(924:0 / 924))
+```
+
+也可以通过查找相应的行政区对应的行名对col参数进行赋值，对相应地区进行着色：
+```{r}
+getColor <- function(mapdata, provname, provcol, othercol) {
+  f <- function(x, y) ifelse(x %in% y, which(y == x), 0)
+  colIndex <- sapply(mapdata@data$NAME, f, provname)
+  col <- c(othercol, provcol)[colIndex + 1]
+  return(col)
+}
+```
+
+其中`mapdata`是存放地图数据的变量，`provname`是需要改变颜色的地区的名称，`provcol`是对应于`provname`的代表颜色的向量，othercol是其它地区的颜色。举例如下：
+
+```{r}
+provname <- c("北京市", "上海市", "重庆市", "福建省")
+provcol <- c("red", "green", "yellow", "purple")
+plot(china, col = getColor(china, provname, provcol, "white"))
+```
+
+利用类似的方法就可以根据自己的需要对不同的区域进行着色，下面再举一例。从国家统计局获取 2007 年我国各地区的人口数据，然后根据人口的多少对各省份进行着色。
+```{r}
+provname <- c(
+  "北京市", "天津市", "河北省", "山西省", "内蒙古自治区",
+  "辽宁省", "吉林省", "黑龙江省", "上海市", "江苏省",
+  "浙江省", "安徽省", "福建省", "江西省", "山东省",
+  "河南省", "湖北省", "湖南省", "广东省",
+  "广西壮族自治区", "海南省", "重庆市", "四川省", "贵州省",
+  "云南省", "西藏自治区", "陕西省", "甘肃省", "青海省",
+  "宁夏回族自治区", "新疆维吾尔自治区", "台湾省",
+  "香港特别行政区"
+)
+pop <- c(
+  1633, 1115, 6943, 3393, 2405, 4298, 2730, 3824, 1858, 7625,
+  5060, 6118, 3581, 4368, 9367, 9360, 5699, 6355, 9449,
+  4768, 845, 2816, 8127, 3762, 4514, 284, 3748, 2617,
+  552, 610, 2095, 2296, 693
+)
+provcol <- rgb(red = 1 - pop / max(pop) / 2, green = 1 - pop / max(pop) / 2, blue = 0)
+plot(china, col = getColor(china, provname, provcol, "white"), xlab = "", ylab = "")
+```
+
+此外，还可以利用这个参数画出国内某一部分的地图，例如绘制福建、浙江、江西和广东四个东南地区省份的地图如下：
+```{r}
+southeast <- c("福建省", "浙江省", "江西省", "广东省")
+plot(china,
+  col = getColor(china, southeast, rep("blue", 4), "white"), border = "white",
+  xlab = "", ylab = ""
+)
+```
+
+可以人工将各省会的信息在地图上标记出来
+```{r}
+par(mar = rep(0, 4))
+dat <- read.csv(text = "城市,jd,wd
+    北 京,116.4666667,39.9
+    上 海,121.4833333,31.23333333
+    天 津,117.1833333,39.15
+    重 庆,106.5333333,29.53333333
+    哈尔滨,126.6833333,45.75
+    长 春,125.3166667,43.86666667
+    沈 阳,123.4,41.83333333
+    呼和浩特,111.8,40.81666667
+    石家庄,114.4666667,38.03333333
+    太 原,112.5666667,37.86666667
+    济 南,117,36.63333333
+    郑 州,113.7,34.8
+    西 安,108.9,34.26666667
+    兰 州,103.8166667,36.05
+    银 川,106.2666667,38.33333333
+    西 宁,101.75,36.63333333
+    乌鲁木齐,87.6,43.8
+    合 肥,117.3,31.85
+    南 京,118.8333333,32.03333333
+    杭 州,120.15,30.23333333
+    长 沙,113,28.18333333
+    南 昌,115.8666667,28.68333333
+    武 汉,114.35,30.61666667
+    成 都,104.0833333,30.65
+    贵 阳,106.7,26.58333333
+    福 州,119.3,26.08333333
+    台 北,121.5166667,25.05
+    广 州,113.25,23.13333333
+    海 口,110.3333333,20.03333333
+    南 宁,108.3333333,22.8
+    昆 明,102.6833333,25
+    拉 萨,91.16666667,29.66666667
+    香 港,114.1666667,22.3
+    澳门,113.5,22.2")
+plot(china, col = "lightgray", ylim = c(18, 54), panel.first = grid())
+par(family = "STKaiti")
+points(dat$jd, dat$wd, pch = 19, col = rgb(0, 0, 0, 0.5), cex = 0.6)
+text(dat$jd, dat$wd, dat[, 1],
+  cex = 0.7, col = rgb(0, 0, 0, 0.7),
+  pos = c(
+    2, 4, 4, 4, 3, 4, 2, 3, 4, 2, 4, 2, 2,
+    4, 3, 2, 1, 3, 1, 1, 2, 3, 2, 2, 1, 2, 4, 3, 1, 2, 2, 4, 4, 2
+  )
+)
+axis(1, lwd = 0)
+axis(2, lwd = 0)
+axis(3, lwd = 0)
+axis(4, lwd = 0)
+```
+
+## REmap包
+REmap是一个基于Echarts 的R语言程序包，为使用者提供了一个简便的、可交互的地图数据可视化工具。由于REmap目前托管在GitHub上,需要使用devtools包下载。
+```{r，eval=FALSE, message=TRUE}
+# install.packages('devtools')
+# library(devtools)
+# install_github('lchiffon/REmap')
+```
+
+### 地图可视化
+```{r}
+library(REmap)
+origin <- rep("北京", 10)
+destination <- c(
+  "上海", "广州", "大连", "南宁", "南昌",
+  "拉萨", "长春", "包头", "重庆", "常州"
+)
+dat <- data.frame(origin, destination)
+remap(dat, title = "REmap实例数据", subtitle = "theme:Dark")
+```
+
+```{=html}
+<script src="./js/echarts.js"></script>
+<script src = "./js/echarts-all.js"></script>
+<div id="remap" style="width: 600px; height:400px;"></div>
+<script>
+  var myChart = echarts.init(document.getElementById("remap"));
+
+  var option = 
+{
+  backgroundColor: '#1b1b1b',
+  color: ['gold','aqua','lime'],
+  title : {
+  text: 'REmap实例数据',
+  subtext:'theme:Dark',
+  x:'center',
+  textStyle : {
+  color: '#fff'
+  }
+  },
+  tooltip : {
+  trigger: 'item',
+  formatter: '{b}'
+  },
+  toolbox: {
+  show : true,
+  orient : 'vertical',
+  x: 'right',
+  y: 'center',
+  feature : {
+  mark : {show: true},
+  dataView : {show: true, readOnly: false},
+  restore : {show: true},
+  saveAsImage : {show: true}
+  }
+  },
+  dataRange: {
+  min : 0,
+  show: false,
+  max : 100,
+  y: '60%',
+  calculable : true,
+  color: ['#ff3333', 'orange', 'yellow','lime','aqua']
+  },
+
+  series : [
+  {
+  type:'map',
+  itemStyle:{
+  normal:{
+  borderColor:'rgba(100,149,237,1)',
+  borderWidth: 0.5,
+  areaStyle:{
+  color: '#1b1b1b'
+  }
+  }
+  },
+  data:[],
+  geoCoord: {'北京': [116.413554,39.911013],
+'上海': [121.480237,31.236305],
+'广州': [113.270793,23.135308],
+'大连': [121.621391,38.919345],
+'南宁': [108.373351,22.823037],
+'南昌': [115.864528,28.687675],
+'拉萨': [91.121025,29.650088],
+'长春': [125.33017,43.82178],
+'包头': [109.846755,40.663636],
+'重庆': [106.557165,29.570997],
+'常州': [119.58,31.47]},
+
+  markLine : {
+  smooth:true,
+  effect : {
+  show: true,
+  scaleSize: 1,
+  period: 30,
+  color: '#fff',
+  shadowBlur: 10
+  },
+  itemStyle : {
+  color: 'red',
+  normal: {
+  borderWidth:1,
+  lineStyle: {
+  type: 'solid',
+  shadowBlur: 10
+  },
+  label:{show:false}
+  }
+  },
+
+  data : [
+  [{name:'北京'}, {name:'上海',value: 90}],
+[{name:'北京'}, {name:'广州',value: 70}],
+[{name:'北京'}, {name:'大连',value: 70}],
+[{name:'北京'}, {name:'南宁',value: 20}],
+[{name:'北京'}, {name:'南昌',value: 80}],
+[{name:'北京'}, {name:'拉萨',value: 80}],
+[{name:'北京'}, {name:'长春',value: 20}],
+[{name:'北京'}, {name:'包头',value: 30}],
+[{name:'北京'}, {name:'重庆',value: 20}],
+[{name:'北京'}, {name:'常州',value:100}]
+  ]
+  },
+  markPoint : {
+  symbol:'emptyCircle',
+  symbolSize : function (v){
+  return 10 + v/10
+  },
+  effect : {
+  show: true,
+  shadowBlur : 0
+  },
+  itemStyle:{
+  normal:{
+  label:{show:true}
+  }
+  },
+  data : [
+  {name:'上海',value: 90},
+{name:'广州',value: 70},
+{name:'大连',value: 70},
+{name:'南宁',value: 20},
+{name:'南昌',value: 80},
+{name:'拉萨',value: 80},
+{name:'长春',value: 20},
+{name:'包头',value: 30},
+{name:'重庆',value: 20},
+{name:'常州',value:100}
+  ]
+  }
+  }
+  ]
+  }
+;
+myChart.setOption(option);
+</script>
+```

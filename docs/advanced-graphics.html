@@ -24,7 +24,7 @@
 <meta name="author" content="刘拓臻, 郑恩昱, 戴玥琨" />
 
 
-<meta name="date" content="2021-12-21" />
+<meta name="date" content="2021-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,13 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -155,7 +148,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="advanced-graphics.html"><a href="advanced-graphics.html"><i class="fa fa-check"></i><b>3</b> Advanced-graphics</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="advanced-graphics.html"><a href="advanced-graphics.html#地图"><i class="fa fa-check"></i><b>3.1</b> 地图</a></li>
+<li class="chapter" data-level="3.1" data-path="advanced-graphics.html"><a href="advanced-graphics.html#maps包"><i class="fa fa-check"></i><b>3.1</b> maps包</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="advanced-graphics.html"><a href="advanced-graphics.html#世界地图"><i class="fa fa-check"></i><b>3.1.1</b> 世界地图</a></li>
+<li class="chapter" data-level="3.1.2" data-path="advanced-graphics.html"><a href="advanced-graphics.html#美国地图"><i class="fa fa-check"></i><b>3.1.2</b> 美国地图</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="advanced-graphics.html"><a href="advanced-graphics.html#中国地图"><i class="fa fa-check"></i><b>3.2</b> 中国地图</a></li>
+<li class="chapter" data-level="3.3" data-path="advanced-graphics.html"><a href="advanced-graphics.html#remap包"><i class="fa fa-check"></i><b>3.3</b> REmap包</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="advanced-graphics.html"><a href="advanced-graphics.html#地图可视化"><i class="fa fa-check"></i><b>3.3.1</b> 地图可视化</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>4</b> Plotly</a>
 <ul>
@@ -206,11 +208,318 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="advanced-graphics" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Advanced-graphics</h1>
-<div id="地图" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> 地图</h2>
-<p>地图毫无疑问是展示地理信息数据时最直观的工具，尤其是当地图和统计量结合时，其功效则会进一步加强。在本书的第一章中曾经提到过John Snow的地图，注意图中不仅标示出了霍乱发生的地点，每个地点的死亡人数也用点的数目标示了出来。历史上还有不少类似的使用地图的例子，而在今天，地理信息系统(GIS)已经成为研究空间和地理数据的热门工具，地图的应用也是屡见不鲜。</p>
-<p>地图的本质是多边形，而多边形的边界则由地理经纬度数据确定。R中的附加包 maps (Brownrigg，2010)是目前比较完善的地图程序包之一，因此本节主要介绍该程序包。</p>
+<p>地图毫无疑问是展示地理信息数据时最直观的工具，尤其是当地图和统计量结合时，其功效则会进一步加强。地理信息系统(GIS)已经成为研究空间和地理数据的热门工具，地图的应用也是屡见不鲜。地图的本质是多边形，而多边形的边界则由地理经纬度数据确定。</p>
+<div id="maps包" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> maps包</h2>
+<p>R中的附加包 maps 是目前比较完善的地图程序包之一，maps包中核心的函数为<code>map()</code>，该函数的两个主要参数为地图数据库<code>database</code>和地图区域<code>region</code>，地图数据库中包含了所有区域的经纬度数据以及相应的区域名称，在指定一个数据库和一系列区域名称之后，这些区域的地图便可由<code>map()</code>生成。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="advanced-graphics.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb1-2"><a href="advanced-graphics.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">usage</span>(map, <span class="at">w =</span> <span class="fl">0.8</span>)</span>
+<span id="cb1-3"><a href="advanced-graphics.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(</span>
+<span id="cb1-4"><a href="advanced-graphics.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;world&quot;</span>, <span class="at">regions =</span> <span class="st">&quot;.&quot;</span>, <span class="at">exact =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-5"><a href="advanced-graphics.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">boundary =</span> <span class="cn">TRUE</span>, <span class="at">interior =</span> <span class="cn">TRUE</span>, <span class="at">projection =</span> <span class="st">&quot;&quot;</span>, <span class="at">parameters =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-6"><a href="advanced-graphics.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">orientation =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="dv">1</span>, <span class="at">plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-7"><a href="advanced-graphics.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">add =</span> <span class="cn">FALSE</span>, <span class="at">namesonly =</span> <span class="cn">FALSE</span>, <span class="at">xlim =</span> <span class="cn">NULL</span>, <span class="at">ylim =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-8"><a href="advanced-graphics.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">wrap =</span> <span class="cn">FALSE</span>, <span class="at">resolution =</span> <span class="cf">if</span> (plot) <span class="dv">1</span> <span class="cf">else</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb1-9"><a href="advanced-graphics.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="fu">par</span>(<span class="st">&quot;bg&quot;</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fu">par</span>(<span class="st">&quot;mar&quot;</span>)[<span class="dv">3</span>], <span class="fl">0.1</span>),</span>
+<span id="cb1-10"><a href="advanced-graphics.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="fl">0.01</span>, ...</span>
+<span id="cb1-11"><a href="advanced-graphics.html#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div id="世界地图" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> 世界地图</h3>
+<p>通过运行如下代码得到世界地图。maps包里面还包括了美国、新西兰、意大利等国的地图。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="advanced-graphics.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb2-2"><a href="advanced-graphics.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb2-3"><a href="advanced-graphics.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;world&quot;</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">200</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">60</span>, <span class="dv">90</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb2-4"><a href="advanced-graphics.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;世界地图&quot;</span>) <span class="co"># 添加标题</span></span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="美国地图" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> 美国地图</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="advanced-graphics.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;state&quot;</span>,</span>
+<span id="cb3-2"><a href="advanced-graphics.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">209</span>),</span>
+<span id="cb3-3"><a href="advanced-graphics.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>)</span>
+<span id="cb3-4"><a href="advanced-graphics.html#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="advanced-graphics.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb3-6"><a href="advanced-graphics.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;美国地图&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>可以根据需要绘制某国地图或者美国某几个州的地图，只需在map()函数中添加选项例如<code>region = c('new york', 'new jersey', 'penn')</code> 即可。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="advanced-graphics.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;state&quot;</span>,</span>
+<span id="cb4-2"><a href="advanced-graphics.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">c</span>(<span class="st">&quot;new york&quot;</span>, <span class="st">&quot;new jersey&quot;</span>, <span class="st">&quot;penn&quot;</span>),</span>
+<span id="cb4-3"><a href="advanced-graphics.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb4-4"><a href="advanced-graphics.html#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-5"><a href="advanced-graphics.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb4-6"><a href="advanced-graphics.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;美国三州地图&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>
+<div id="中国地图" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 中国地图</h2>
+<p>在国家基础地理信息中心的网站上提供了免费的GIS数据下载，里面包括了国界与省界数据，使用R的<code>maptools::readShapePoly</code>或<code>rgdal::readOGR</code>可以读取shp文件。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="advanced-graphics.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptools)</span>
+<span id="cb5-2"><a href="advanced-graphics.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb5-3"><a href="advanced-graphics.html#cb5-3" aria-hidden="true" tabindex="-1"></a>china <span class="ot">&lt;-</span> <span class="fu">readOGR</span>(<span class="st">&quot;./china/bou2_4p.shp&quot;</span>)</span>
+<span id="cb5-4"><a href="advanced-graphics.html#cb5-4" aria-hidden="true" tabindex="-1"></a>china<span class="sc">@</span>data<span class="sc">$</span>NAME <span class="ot">&lt;-</span> <span class="fu">iconv</span>(china<span class="sc">@</span>data<span class="sc">$</span>NAME, <span class="st">&quot;GBK&quot;</span>, <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>该数据包含了中国925个地区的的面积、周长、编号、行政区名称等信息。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="advanced-graphics.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(china<span class="sc">@</span>data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    925 obs. of  7 variables:
+##  $ AREA      : num  54.4 129.1 175.6 21.3 15.6 ...
+##  $ PERIMETER : num  68.5 129.9 84.9 41.2 38.4 ...
+##  $ BOU2_4M_  : chr  &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; ...
+##  $ BOU2_4M_ID: chr  &quot;23&quot; &quot;15&quot; &quot;65&quot; &quot;22&quot; ...
+##  $ ADCODE93  : int  230000 150000 650000 220000 210000 620000 130000 110000 210000 210000 ...
+##  $ ADCODE99  : int  230000 150000 650000 220000 210000 620000 130000 110000 210000 210000 ...
+##  $ NAME      : chr  &quot;黑龙江省&quot; &quot;内蒙古自治区&quot; &quot;新疆维吾尔自治区&quot; &quot;吉林省&quot; ...</code></pre>
+<p>在绘制地图时，每一个省市自治区或岛屿都是用一个多边形来表示的。 GIS 数据提供了每一个行政区其多边形逐点的坐标，然后 R 通过顺次连接这些坐标，就绘制出了一个多边形区域。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="advanced-graphics.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china)</span>
+<span id="cb8-2"><a href="advanced-graphics.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb8-3"><a href="advanced-graphics.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;中国地图&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>plot命令中的col参数在本例中应该是一个长度为 925 的向量，其第 i 个分量的取值就代表了地图中第 i 个多边形的颜色。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="advanced-graphics.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">924</span><span class="sc">:</span><span class="dv">0</span> <span class="sc">/</span> <span class="dv">924</span>))</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>也可以通过查找相应的行政区对应的行名对col参数进行赋值，对相应地区进行着色：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="advanced-graphics.html#cb10-1" aria-hidden="true" tabindex="-1"></a>getColor <span class="ot">&lt;-</span> <span class="cf">function</span>(mapdata, provname, provcol, othercol) {</span>
+<span id="cb10-2"><a href="advanced-graphics.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) <span class="fu">ifelse</span>(x <span class="sc">%in%</span> y, <span class="fu">which</span>(y <span class="sc">==</span> x), <span class="dv">0</span>)</span>
+<span id="cb10-3"><a href="advanced-graphics.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  colIndex <span class="ot">&lt;-</span> <span class="fu">sapply</span>(mapdata<span class="sc">@</span>data<span class="sc">$</span>NAME, f, provname)</span>
+<span id="cb10-4"><a href="advanced-graphics.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  col <span class="ot">&lt;-</span> <span class="fu">c</span>(othercol, provcol)[colIndex <span class="sc">+</span> <span class="dv">1</span>]</span>
+<span id="cb10-5"><a href="advanced-graphics.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(col)</span>
+<span id="cb10-6"><a href="advanced-graphics.html#cb10-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>其中<code>mapdata</code>是存放地图数据的变量，<code>provname</code>是需要改变颜色的地区的名称，<code>provcol</code>是对应于<code>provname</code>的代表颜色的向量，othercol是其它地区的颜色。举例如下：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="advanced-graphics.html#cb11-1" aria-hidden="true" tabindex="-1"></a>provname <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;北京市&quot;</span>, <span class="st">&quot;上海市&quot;</span>, <span class="st">&quot;重庆市&quot;</span>, <span class="st">&quot;福建省&quot;</span>)</span>
+<span id="cb11-2"><a href="advanced-graphics.html#cb11-2" aria-hidden="true" tabindex="-1"></a>provcol <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;purple&quot;</span>)</span>
+<span id="cb11-3"><a href="advanced-graphics.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">getColor</span>(china, provname, provcol, <span class="st">&quot;white&quot;</span>))</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>利用类似的方法就可以根据自己的需要对不同的区域进行着色，下面再举一例。从国家统计局获取 2007 年我国各地区的人口数据，然后根据人口的多少对各省份进行着色。</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="advanced-graphics.html#cb12-1" aria-hidden="true" tabindex="-1"></a>provname <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-2"><a href="advanced-graphics.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;北京市&quot;</span>, <span class="st">&quot;天津市&quot;</span>, <span class="st">&quot;河北省&quot;</span>, <span class="st">&quot;山西省&quot;</span>, <span class="st">&quot;内蒙古自治区&quot;</span>,</span>
+<span id="cb12-3"><a href="advanced-graphics.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;辽宁省&quot;</span>, <span class="st">&quot;吉林省&quot;</span>, <span class="st">&quot;黑龙江省&quot;</span>, <span class="st">&quot;上海市&quot;</span>, <span class="st">&quot;江苏省&quot;</span>,</span>
+<span id="cb12-4"><a href="advanced-graphics.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;浙江省&quot;</span>, <span class="st">&quot;安徽省&quot;</span>, <span class="st">&quot;福建省&quot;</span>, <span class="st">&quot;江西省&quot;</span>, <span class="st">&quot;山东省&quot;</span>,</span>
+<span id="cb12-5"><a href="advanced-graphics.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;河南省&quot;</span>, <span class="st">&quot;湖北省&quot;</span>, <span class="st">&quot;湖南省&quot;</span>, <span class="st">&quot;广东省&quot;</span>,</span>
+<span id="cb12-6"><a href="advanced-graphics.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;广西壮族自治区&quot;</span>, <span class="st">&quot;海南省&quot;</span>, <span class="st">&quot;重庆市&quot;</span>, <span class="st">&quot;四川省&quot;</span>, <span class="st">&quot;贵州省&quot;</span>,</span>
+<span id="cb12-7"><a href="advanced-graphics.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;云南省&quot;</span>, <span class="st">&quot;西藏自治区&quot;</span>, <span class="st">&quot;陕西省&quot;</span>, <span class="st">&quot;甘肃省&quot;</span>, <span class="st">&quot;青海省&quot;</span>,</span>
+<span id="cb12-8"><a href="advanced-graphics.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;宁夏回族自治区&quot;</span>, <span class="st">&quot;新疆维吾尔自治区&quot;</span>, <span class="st">&quot;台湾省&quot;</span>,</span>
+<span id="cb12-9"><a href="advanced-graphics.html#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;香港特别行政区&quot;</span></span>
+<span id="cb12-10"><a href="advanced-graphics.html#cb12-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-11"><a href="advanced-graphics.html#cb12-11" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-12"><a href="advanced-graphics.html#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1633</span>, <span class="dv">1115</span>, <span class="dv">6943</span>, <span class="dv">3393</span>, <span class="dv">2405</span>, <span class="dv">4298</span>, <span class="dv">2730</span>, <span class="dv">3824</span>, <span class="dv">1858</span>, <span class="dv">7625</span>,</span>
+<span id="cb12-13"><a href="advanced-graphics.html#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="dv">5060</span>, <span class="dv">6118</span>, <span class="dv">3581</span>, <span class="dv">4368</span>, <span class="dv">9367</span>, <span class="dv">9360</span>, <span class="dv">5699</span>, <span class="dv">6355</span>, <span class="dv">9449</span>,</span>
+<span id="cb12-14"><a href="advanced-graphics.html#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="dv">4768</span>, <span class="dv">845</span>, <span class="dv">2816</span>, <span class="dv">8127</span>, <span class="dv">3762</span>, <span class="dv">4514</span>, <span class="dv">284</span>, <span class="dv">3748</span>, <span class="dv">2617</span>,</span>
+<span id="cb12-15"><a href="advanced-graphics.html#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="dv">552</span>, <span class="dv">610</span>, <span class="dv">2095</span>, <span class="dv">2296</span>, <span class="dv">693</span></span>
+<span id="cb12-16"><a href="advanced-graphics.html#cb12-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-17"><a href="advanced-graphics.html#cb12-17" aria-hidden="true" tabindex="-1"></a>provcol <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="at">red =</span> <span class="dv">1</span> <span class="sc">-</span> pop <span class="sc">/</span> <span class="fu">max</span>(pop) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">green =</span> <span class="dv">1</span> <span class="sc">-</span> pop <span class="sc">/</span> <span class="fu">max</span>(pop) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">0</span>)</span>
+<span id="cb12-18"><a href="advanced-graphics.html#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">getColor</span>(china, provname, provcol, <span class="st">&quot;white&quot;</span>), <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>此外，还可以利用这个参数画出国内某一部分的地图，例如绘制福建、浙江、江西和广东四个东南地区省份的地图如下：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="advanced-graphics.html#cb13-1" aria-hidden="true" tabindex="-1"></a>southeast <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;福建省&quot;</span>, <span class="st">&quot;浙江省&quot;</span>, <span class="st">&quot;江西省&quot;</span>, <span class="st">&quot;广东省&quot;</span>)</span>
+<span id="cb13-2"><a href="advanced-graphics.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china,</span>
+<span id="cb13-3"><a href="advanced-graphics.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">getColor</span>(china, southeast, <span class="fu">rep</span>(<span class="st">&quot;blue&quot;</span>, <span class="dv">4</span>), <span class="st">&quot;white&quot;</span>), <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb13-4"><a href="advanced-graphics.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb13-5"><a href="advanced-graphics.html#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>可以人工将各省会的信息在地图上标记出来</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="advanced-graphics.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span>
+<span id="cb14-2"><a href="advanced-graphics.html#cb14-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">text =</span> <span class="st">&quot;城市,jd,wd</span></span>
+<span id="cb14-3"><a href="advanced-graphics.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">    北 京,116.4666667,39.9</span></span>
+<span id="cb14-4"><a href="advanced-graphics.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">    上 海,121.4833333,31.23333333</span></span>
+<span id="cb14-5"><a href="advanced-graphics.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">    天 津,117.1833333,39.15</span></span>
+<span id="cb14-6"><a href="advanced-graphics.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">    重 庆,106.5333333,29.53333333</span></span>
+<span id="cb14-7"><a href="advanced-graphics.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">    哈尔滨,126.6833333,45.75</span></span>
+<span id="cb14-8"><a href="advanced-graphics.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="st">    长 春,125.3166667,43.86666667</span></span>
+<span id="cb14-9"><a href="advanced-graphics.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="st">    沈 阳,123.4,41.83333333</span></span>
+<span id="cb14-10"><a href="advanced-graphics.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="st">    呼和浩特,111.8,40.81666667</span></span>
+<span id="cb14-11"><a href="advanced-graphics.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="st">    石家庄,114.4666667,38.03333333</span></span>
+<span id="cb14-12"><a href="advanced-graphics.html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="st">    太 原,112.5666667,37.86666667</span></span>
+<span id="cb14-13"><a href="advanced-graphics.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="st">    济 南,117,36.63333333</span></span>
+<span id="cb14-14"><a href="advanced-graphics.html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="st">    郑 州,113.7,34.8</span></span>
+<span id="cb14-15"><a href="advanced-graphics.html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="st">    西 安,108.9,34.26666667</span></span>
+<span id="cb14-16"><a href="advanced-graphics.html#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="st">    兰 州,103.8166667,36.05</span></span>
+<span id="cb14-17"><a href="advanced-graphics.html#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="st">    银 川,106.2666667,38.33333333</span></span>
+<span id="cb14-18"><a href="advanced-graphics.html#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="st">    西 宁,101.75,36.63333333</span></span>
+<span id="cb14-19"><a href="advanced-graphics.html#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="st">    乌鲁木齐,87.6,43.8</span></span>
+<span id="cb14-20"><a href="advanced-graphics.html#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="st">    合 肥,117.3,31.85</span></span>
+<span id="cb14-21"><a href="advanced-graphics.html#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="st">    南 京,118.8333333,32.03333333</span></span>
+<span id="cb14-22"><a href="advanced-graphics.html#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="st">    杭 州,120.15,30.23333333</span></span>
+<span id="cb14-23"><a href="advanced-graphics.html#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="st">    长 沙,113,28.18333333</span></span>
+<span id="cb14-24"><a href="advanced-graphics.html#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="st">    南 昌,115.8666667,28.68333333</span></span>
+<span id="cb14-25"><a href="advanced-graphics.html#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="st">    武 汉,114.35,30.61666667</span></span>
+<span id="cb14-26"><a href="advanced-graphics.html#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="st">    成 都,104.0833333,30.65</span></span>
+<span id="cb14-27"><a href="advanced-graphics.html#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="st">    贵 阳,106.7,26.58333333</span></span>
+<span id="cb14-28"><a href="advanced-graphics.html#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="st">    福 州,119.3,26.08333333</span></span>
+<span id="cb14-29"><a href="advanced-graphics.html#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="st">    台 北,121.5166667,25.05</span></span>
+<span id="cb14-30"><a href="advanced-graphics.html#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="st">    广 州,113.25,23.13333333</span></span>
+<span id="cb14-31"><a href="advanced-graphics.html#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="st">    海 口,110.3333333,20.03333333</span></span>
+<span id="cb14-32"><a href="advanced-graphics.html#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="st">    南 宁,108.3333333,22.8</span></span>
+<span id="cb14-33"><a href="advanced-graphics.html#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="st">    昆 明,102.6833333,25</span></span>
+<span id="cb14-34"><a href="advanced-graphics.html#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="st">    拉 萨,91.16666667,29.66666667</span></span>
+<span id="cb14-35"><a href="advanced-graphics.html#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="st">    香 港,114.1666667,22.3</span></span>
+<span id="cb14-36"><a href="advanced-graphics.html#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="st">    澳门,113.5,22.2&quot;</span>)</span>
+<span id="cb14-37"><a href="advanced-graphics.html#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">54</span>), <span class="at">panel.first =</span> <span class="fu">grid</span>())</span>
+<span id="cb14-38"><a href="advanced-graphics.html#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb14-39"><a href="advanced-graphics.html#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(dat<span class="sc">$</span>jd, dat<span class="sc">$</span>wd, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">cex =</span> <span class="fl">0.6</span>)</span>
+<span id="cb14-40"><a href="advanced-graphics.html#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(dat<span class="sc">$</span>jd, dat<span class="sc">$</span>wd, dat[, <span class="dv">1</span>],</span>
+<span id="cb14-41"><a href="advanced-graphics.html#cb14-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">0.7</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.7</span>),</span>
+<span id="cb14-42"><a href="advanced-graphics.html#cb14-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="fu">c</span>(</span>
+<span id="cb14-43"><a href="advanced-graphics.html#cb14-43" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>,</span>
+<span id="cb14-44"><a href="advanced-graphics.html#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span></span>
+<span id="cb14-45"><a href="advanced-graphics.html#cb14-45" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-46"><a href="advanced-graphics.html#cb14-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-47"><a href="advanced-graphics.html#cb14-47" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
+<span id="cb14-48"><a href="advanced-graphics.html#cb14-48" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
+<span id="cb14-49"><a href="advanced-graphics.html#cb14-49" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
+<span id="cb14-50"><a href="advanced-graphics.html#cb14-50" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="remap包" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> REmap包</h2>
+<p>REmap是一个基于Echarts 的R语言程序包，为使用者提供了一个简便的、可交互的地图数据可视化工具。由于REmap目前托管在GitHub上,需要使用devtools包下载。
+<code>{r，eval=FALSE, message=TRUE} # install.packages('devtools') # library(devtools) # install_github('lchiffon/REmap')</code></p>
+<div id="地图可视化" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> 地图可视化</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="advanced-graphics.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(REmap)</span>
+<span id="cb15-2"><a href="advanced-graphics.html#cb15-2" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;北京&quot;</span>, <span class="dv">10</span>)</span>
+<span id="cb15-3"><a href="advanced-graphics.html#cb15-3" aria-hidden="true" tabindex="-1"></a>destination <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb15-4"><a href="advanced-graphics.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;上海&quot;</span>, <span class="st">&quot;广州&quot;</span>, <span class="st">&quot;大连&quot;</span>, <span class="st">&quot;南宁&quot;</span>, <span class="st">&quot;南昌&quot;</span>,</span>
+<span id="cb15-5"><a href="advanced-graphics.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;拉萨&quot;</span>, <span class="st">&quot;长春&quot;</span>, <span class="st">&quot;包头&quot;</span>, <span class="st">&quot;重庆&quot;</span>, <span class="st">&quot;常州&quot;</span></span>
+<span id="cb15-6"><a href="advanced-graphics.html#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-7"><a href="advanced-graphics.html#cb15-7" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(origin, destination)</span>
+<span id="cb15-8"><a href="advanced-graphics.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">remap</span>(dat, <span class="at">title =</span> <span class="st">&quot;REmap实例数据&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;theme:Dark&quot;</span>)</span></code></pre></div>
+<pre><code>## Save img as: /var/folders/vn/mqlv1pvx1fdcczqtg5tgm0f00000gn/T//RtmppKtCKI/ID_20211222004722_1672.html</code></pre>
+<script src="./js/echarts.js"></script>
+<script src = "./js/echarts-all.js"></script>
+<div id="remap" style="width: 600px; height:400px;"></div>
+<script>
+  var myChart = echarts.init(document.getElementById("remap"));
 
+  var option = 
+{
+  backgroundColor: '#1b1b1b',
+  color: ['gold','aqua','lime'],
+  title : {
+  text: 'REmap实例数据',
+  subtext:'theme:Dark',
+  x:'center',
+  textStyle : {
+  color: '#fff'
+  }
+  },
+  tooltip : {
+  trigger: 'item',
+  formatter: '{b}'
+  },
+  toolbox: {
+  show : true,
+  orient : 'vertical',
+  x: 'right',
+  y: 'center',
+  feature : {
+  mark : {show: true},
+  dataView : {show: true, readOnly: false},
+  restore : {show: true},
+  saveAsImage : {show: true}
+  }
+  },
+  dataRange: {
+  min : 0,
+  show: false,
+  max : 100,
+  y: '60%',
+  calculable : true,
+  color: ['#ff3333', 'orange', 'yellow','lime','aqua']
+  },
+
+  series : [
+  {
+  type:'map',
+  itemStyle:{
+  normal:{
+  borderColor:'rgba(100,149,237,1)',
+  borderWidth: 0.5,
+  areaStyle:{
+  color: '#1b1b1b'
+  }
+  }
+  },
+  data:[],
+  geoCoord: {'北京': [116.413554,39.911013],
+'上海': [121.480237,31.236305],
+'广州': [113.270793,23.135308],
+'大连': [121.621391,38.919345],
+'南宁': [108.373351,22.823037],
+'南昌': [115.864528,28.687675],
+'拉萨': [91.121025,29.650088],
+'长春': [125.33017,43.82178],
+'包头': [109.846755,40.663636],
+'重庆': [106.557165,29.570997],
+'常州': [119.58,31.47]},
+
+  markLine : {
+  smooth:true,
+  effect : {
+  show: true,
+  scaleSize: 1,
+  period: 30,
+  color: '#fff',
+  shadowBlur: 10
+  },
+  itemStyle : {
+  color: 'red',
+  normal: {
+  borderWidth:1,
+  lineStyle: {
+  type: 'solid',
+  shadowBlur: 10
+  },
+  label:{show:false}
+  }
+  },
+
+  data : [
+  [{name:'北京'}, {name:'上海',value: 90}],
+[{name:'北京'}, {name:'广州',value: 70}],
+[{name:'北京'}, {name:'大连',value: 70}],
+[{name:'北京'}, {name:'南宁',value: 20}],
+[{name:'北京'}, {name:'南昌',value: 80}],
+[{name:'北京'}, {name:'拉萨',value: 80}],
+[{name:'北京'}, {name:'长春',value: 20}],
+[{name:'北京'}, {name:'包头',value: 30}],
+[{name:'北京'}, {name:'重庆',value: 20}],
+[{name:'北京'}, {name:'常州',value:100}]
+  ]
+  },
+  markPoint : {
+  symbol:'emptyCircle',
+  symbolSize : function (v){
+  return 10 + v/10
+  },
+  effect : {
+  show: true,
+  shadowBlur : 0
+  },
+  itemStyle:{
+  normal:{
+  label:{show:true}
+  }
+  },
+  data : [
+  {name:'上海',value: 90},
+{name:'广州',value: 70},
+{name:'大连',value: 70},
+{name:'南宁',value: 20},
+{name:'南昌',value: 80},
+{name:'拉萨',value: 80},
+{name:'长春',value: 20},
+{name:'包头',value: 30},
+{name:'重庆',value: 20},
+{name:'常州',value:100}
+  ]
+  }
+  }
+  ]
+  }
+;
+myChart.setOption(option);
+</script>
+
+</div>
 </div>
 </div>
             </section>
