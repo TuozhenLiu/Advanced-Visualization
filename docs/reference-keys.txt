@@ -11,7 +11,12 @@ maps包
 美国地图
 中国地图
 remap包
+获取经纬度信息
+获取各省市的市区级行政单位名称
 地图可视化
+remap函数绘制航迹图
+remaph绘制热力效果图
+remapc绘制填充地图
 plotly
 overview
 plotly-pipeline
@@ -35,4 +40,3 @@ layout
 javascript
 visualization-project
 industry-analysis
-test
