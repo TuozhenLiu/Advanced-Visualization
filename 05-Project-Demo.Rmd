@@ -20,4 +20,4 @@
 
 <strong>点击跳转 👇</strong>
 
-[![](fig/project1.png)](main.html)
+<a href="main.html" target="_blank"><img src="fig/project1.png" target="_blank"></a>
