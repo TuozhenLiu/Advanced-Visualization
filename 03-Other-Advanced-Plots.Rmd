@@ -1,0 +1,72 @@
+# Other Advanced Plots
+
+## 三维图形
+
+R中一般使用persp()函数来绘制三维图形。
+```{r}
+x <- seq(-10, 10, length= 30)
+y <- x
+f <- function(x, y) { r <- sqrt(x^2+y^2); 10 * sin(r)/r }
+z <- outer(x, y, f)
+z[is.na(z)] <- 1
+op <- par(bg = "white")
+persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue")
+```
+
+R中还提供了专门的scatterplot3d包来绘制三维图形。
+```{r}
+library(scatterplot3d)
+data(iris)
+scatterplot3d(iris$Petal.Width, iris$Sepal.Length, iris$Sepal.Width)
+```
+
+## 词云
+在目前流行的文本挖掘中，词云(world cloud)是一个常用的对文本词汇频次进行表现的形式。一般通过文字字号的大小来表示词频的多少，还可以使用不同颜色加以区分。
+
+```{r message=FALSE}
+library(wordcloud)
+library(tm)
+data(crude)
+crude <- tm_map(crude, removePunctuation)
+crude <- tm_map(crude, function(x)removeWords(x,stopwords()))
+tdm <- TermDocumentMatrix(crude)
+m <- as.matrix(tdm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+wordcloud(d$word,d$freq,random.order=FALSE, colors=brewer.pal(8, "Dark2"))
+```
+
+## 散点图矩阵与关系矩阵图
+
+散点图矩阵是将多个散点图合并在一起的表现形式，由n个变量构成n×n的矩阵。R中有pairs()函数可以绘制。
+```{r}
+pairs(mtcars)
+```
+
+R中还有一个corrplot的包可以更直观和美观的展示这种相关关系。
+```{r message=FALSE, warning=FALSE}
+library(corrplot)
+corrplot(cor(mtcars), tl.pos = "d", cl.pos = "n")
+```
+
+我们还可以在函数中加上按照相关系数大小排序以及对正负相关变量进行区分，让图形变得更美观易读。
+```{r}
+corrplot(cor(mtcars), order = "h", tl.pos = "d", cl.pos = "n", addrect = 2)
+```
+
+## 马赛克图
+R中马赛克图的函数为mosaicplot()，这里使用的示例数据是泰坦尼克号乘客生存情况数据：
+```{r}
+ftable(Titanic)
+```
+
+我们所关心的问题主要是通过一些比例看出当时救援的侧重性，如：是否头等舱的乘客生还比例最高？“女士和孩子优先”的原则在各船舱有没有被很好遵守？
+```{r}
+library(stats)
+library(graphics)
+mosaicplot(Titanic, main = "Survival on the Titanic", color = TRUE)
+```
+
+感兴趣的读者还可以使用stats包中的loglin()函数拟合对数线性模型、从统计模型的角度继续分析。
+
+

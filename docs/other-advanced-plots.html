@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Other Advanced Plots | 高级统计绘图</title>
+  <meta name="description" content="Chapter 3 Other Advanced Plots | 高级统计绘图" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Other Advanced Plots | 高级统计绘图" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Other Advanced Plots | 高级统计绘图" />
+  
+  
+  
+
+<meta name="author" content="刘拓臻, 郑恩昱, 戴玥琨" />
+
+
+<meta name="date" content="2021-12-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ggplot2.html"/>
+<link rel="next" href="maps.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">高级统计绘图</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>2</b> ggplot2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ggplot2.html"><a href="ggplot2.html#散点图"><i class="fa fa-check"></i><b>2.1</b> 散点图</a></li>
+<li class="chapter" data-level="2.2" data-path="ggplot2.html"><a href="ggplot2.html#条形图和箱线图"><i class="fa fa-check"></i><b>2.2</b> 条形图和箱线图</a></li>
+<li class="chapter" data-level="2.3" data-path="ggplot2.html"><a href="ggplot2.html#直方图和密度曲线图"><i class="fa fa-check"></i><b>2.3</b> 直方图和密度曲线图</a></li>
+<li class="chapter" data-level="2.4" data-path="ggplot2.html"><a href="ggplot2.html#时间序列图"><i class="fa fa-check"></i><b>2.4</b> 时间序列图</a></li>
+<li class="chapter" data-level="2.5" data-path="ggplot2.html"><a href="ggplot2.html#图形标注"><i class="fa fa-check"></i><b>2.5</b> 图形标注</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="other-advanced-plots.html"><a href="other-advanced-plots.html"><i class="fa fa-check"></i><b>3</b> Other Advanced Plots</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="other-advanced-plots.html"><a href="other-advanced-plots.html#三维图形"><i class="fa fa-check"></i><b>3.1</b> 三维图形</a></li>
+<li class="chapter" data-level="3.2" data-path="other-advanced-plots.html"><a href="other-advanced-plots.html#词云"><i class="fa fa-check"></i><b>3.2</b> 词云</a></li>
+<li class="chapter" data-level="3.3" data-path="other-advanced-plots.html"><a href="other-advanced-plots.html#散点图矩阵与关系矩阵图"><i class="fa fa-check"></i><b>3.3</b> 散点图矩阵与关系矩阵图</a></li>
+<li class="chapter" data-level="3.4" data-path="other-advanced-plots.html"><a href="other-advanced-plots.html#马赛克图"><i class="fa fa-check"></i><b>3.4</b> 马赛克图</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>4</b> Maps</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="maps.html"><a href="maps.html#maps包"><i class="fa fa-check"></i><b>4.1</b> maps包</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="maps.html"><a href="maps.html#世界地图"><i class="fa fa-check"></i><b>4.1.1</b> 世界地图</a></li>
+<li class="chapter" data-level="4.1.2" data-path="maps.html"><a href="maps.html#美国地图"><i class="fa fa-check"></i><b>4.1.2</b> 美国地图</a></li>
+<li class="chapter" data-level="4.1.3" data-path="maps.html"><a href="maps.html#中国地图"><i class="fa fa-check"></i><b>4.1.3</b> 中国地图</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="maps.html"><a href="maps.html#remap包"><i class="fa fa-check"></i><b>4.2</b> REmap包</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="maps.html"><a href="maps.html#获取经纬度信息"><i class="fa fa-check"></i><b>4.2.1</b> 获取经纬度信息</a></li>
+<li class="chapter" data-level="4.2.2" data-path="maps.html"><a href="maps.html#获取各省市的市区级行政单位名称"><i class="fa fa-check"></i><b>4.2.2</b> 获取各省（市）的市（区）级行政单位名称</a></li>
+<li class="chapter" data-level="4.2.3" data-path="maps.html"><a href="maps.html#地图可视化"><i class="fa fa-check"></i><b>4.2.3</b> 地图可视化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>5</b> Plotly</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="plotly.html"><a href="plotly.html#plotly简介"><i class="fa fa-check"></i><b>5.1</b> Plotly简介</a></li>
+<li class="chapter" data-level="5.2" data-path="plotly.html"><a href="plotly.html#plotly工作流"><i class="fa fa-check"></i><b>5.2</b> Plotly工作流</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="plotly.html"><a href="plotly.html#构建plotly对象"><i class="fa fa-check"></i><b>5.2.1</b> 构建plotly对象</a></li>
+<li class="chapter" data-level="5.2.2" data-path="plotly.html"><a href="plotly.html#添加trace"><i class="fa fa-check"></i><b>5.2.2</b> 添加trace</a></li>
+<li class="chapter" data-level="5.2.3" data-path="plotly.html"><a href="plotly.html#获取源数据"><i class="fa fa-check"></i><b>5.2.3</b> 获取源数据</a></li>
+<li class="chapter" data-level="5.2.4" data-path="plotly.html"><a href="plotly.html#发布可视化作品"><i class="fa fa-check"></i><b>5.2.4</b> 发布可视化作品</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="plotly.html"><a href="plotly.html#plotly基础"><i class="fa fa-check"></i><b>5.3</b> Plotly基础</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="plotly.html"><a href="plotly.html#markers"><i class="fa fa-check"></i><b>5.3.1</b> markers</a></li>
+<li class="chapter" data-level="5.3.2" data-path="plotly.html"><a href="plotly.html#lines"><i class="fa fa-check"></i><b>5.3.2</b> Lines</a></li>
+<li class="chapter" data-level="5.3.3" data-path="plotly.html"><a href="plotly.html#bars-histograms"><i class="fa fa-check"></i><b>5.3.3</b> Bars &amp; histograms</a></li>
+<li class="chapter" data-level="5.3.4" data-path="plotly.html"><a href="plotly.html#boxplots"><i class="fa fa-check"></i><b>5.3.4</b> Boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="plotly.html"><a href="plotly.html#plotly进阶"><i class="fa fa-check"></i><b>5.4</b> Plotly进阶</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="plotly.html"><a href="plotly.html#ggplotly"><i class="fa fa-check"></i><b>5.4.1</b> ggplotly</a></li>
+<li class="chapter" data-level="5.4.2" data-path="plotly.html"><a href="plotly.html#layout"><i class="fa fa-check"></i><b>5.4.2</b> layout</a></li>
+<li class="chapter" data-level="5.4.3" data-path="plotly.html"><a href="plotly.html#javascript"><i class="fa fa-check"></i><b>5.4.3</b> Javascript</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visualization-project.html"><a href="visualization-project.html"><i class="fa fa-check"></i><b>6</b> Visualization Project</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visualization-project.html"><a href="visualization-project.html#industry-analysis"><i class="fa fa-check"></i><b>6.1</b> Industry analysis</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/TuozhenLiu/Advanced-Visualiztion" target="blank">Contact us</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">高级统计绘图</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="other-advanced-plots" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Other Advanced Plots</h1>
+<div id="三维图形" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 三维图形</h2>
+<p>R中一般使用persp()函数来绘制三维图形。</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="other-advanced-plots.html#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">length=</span> <span class="dv">30</span>)</span>
+<span id="cb28-2"><a href="other-advanced-plots.html#cb28-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x</span>
+<span id="cb28-3"><a href="other-advanced-plots.html#cb28-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) { r <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>y<span class="sc">^</span><span class="dv">2</span>); <span class="dv">10</span> <span class="sc">*</span> <span class="fu">sin</span>(r)<span class="sc">/</span>r }</span>
+<span id="cb28-4"><a href="other-advanced-plots.html#cb28-4" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, f)</span>
+<span id="cb28-5"><a href="other-advanced-plots.html#cb28-5" aria-hidden="true" tabindex="-1"></a>z[<span class="fu">is.na</span>(z)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb28-6"><a href="other-advanced-plots.html#cb28-6" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">bg =</span> <span class="st">&quot;white&quot;</span>)</span>
+<span id="cb28-7"><a href="other-advanced-plots.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(x, y, z, <span class="at">theta =</span> <span class="dv">30</span>, <span class="at">phi =</span> <span class="dv">30</span>, <span class="at">expand =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>R中还提供了专门的scatterplot3d包来绘制三维图形。</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="other-advanced-plots.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scatterplot3d)</span>
+<span id="cb29-2"><a href="other-advanced-plots.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb29-3"><a href="other-advanced-plots.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot3d</span>(iris<span class="sc">$</span>Petal.Width, iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="词云" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 词云</h2>
+<p>在目前流行的文本挖掘中，词云(world cloud)是一个常用的对文本词汇频次进行表现的形式。一般通过文字字号的大小来表示词频的多少，还可以使用不同颜色加以区分。</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="other-advanced-plots.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb30-2"><a href="other-advanced-plots.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb30-3"><a href="other-advanced-plots.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(crude)</span>
+<span id="cb30-4"><a href="other-advanced-plots.html#cb30-4" aria-hidden="true" tabindex="-1"></a>crude <span class="ot">&lt;-</span> <span class="fu">tm_map</span>(crude, removePunctuation)</span>
+<span id="cb30-5"><a href="other-advanced-plots.html#cb30-5" aria-hidden="true" tabindex="-1"></a>crude <span class="ot">&lt;-</span> <span class="fu">tm_map</span>(crude, <span class="cf">function</span>(x)<span class="fu">removeWords</span>(x,<span class="fu">stopwords</span>()))</span>
+<span id="cb30-6"><a href="other-advanced-plots.html#cb30-6" aria-hidden="true" tabindex="-1"></a>tdm <span class="ot">&lt;-</span> <span class="fu">TermDocumentMatrix</span>(crude)</span>
+<span id="cb30-7"><a href="other-advanced-plots.html#cb30-7" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(tdm)</span>
+<span id="cb30-8"><a href="other-advanced-plots.html#cb30-8" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">rowSums</span>(m),<span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb30-9"><a href="other-advanced-plots.html#cb30-9" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">word =</span> <span class="fu">names</span>(v),<span class="at">freq=</span>v)</span>
+<span id="cb30-10"><a href="other-advanced-plots.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(d<span class="sc">$</span>word,d<span class="sc">$</span>freq,<span class="at">random.order=</span><span class="cn">FALSE</span>, <span class="at">colors=</span><span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Dark2&quot;</span>))</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+</div>
+<div id="散点图矩阵与关系矩阵图" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> 散点图矩阵与关系矩阵图</h2>
+<p>散点图矩阵是将多个散点图合并在一起的表现形式，由n个变量构成n×n的矩阵。R中有pairs()函数可以绘制。</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="other-advanced-plots.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(mtcars)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>R中还有一个corrplot的包可以更直观和美观的展示这种相关关系。</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="other-advanced-plots.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb32-2"><a href="other-advanced-plots.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(mtcars), <span class="at">tl.pos =</span> <span class="st">&quot;d&quot;</span>, <span class="at">cl.pos =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>我们还可以在函数中加上按照相关系数大小排序以及对正负相关变量进行区分，让图形变得更美观易读。</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="other-advanced-plots.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(mtcars), <span class="at">order =</span> <span class="st">&quot;h&quot;</span>, <span class="at">tl.pos =</span> <span class="st">&quot;d&quot;</span>, <span class="at">cl.pos =</span> <span class="st">&quot;n&quot;</span>, <span class="at">addrect =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+</div>
+<div id="马赛克图" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> 马赛克图</h2>
+<p>R中马赛克图的函数为mosaicplot()，这里使用的示例数据是泰坦尼克号乘客生存情况数据：</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="other-advanced-plots.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(Titanic)</span></code></pre></div>
+<pre><code>##                    Survived  No Yes
+## Class Sex    Age                   
+## 1st   Male   Child            0   5
+##              Adult          118  57
+##       Female Child            0   1
+##              Adult            4 140
+## 2nd   Male   Child            0  11
+##              Adult          154  14
+##       Female Child            0  13
+##              Adult           13  80
+## 3rd   Male   Child           35  13
+##              Adult          387  75
+##       Female Child           17  14
+##              Adult           89  76
+## Crew  Male   Child            0   0
+##              Adult          670 192
+##       Female Child            0   0
+##              Adult            3  20</code></pre>
+<p>我们所关心的问题主要是通过一些比例看出当时救援的侧重性，如：是否头等舱的乘客生还比例最高？“女士和孩子优先”的原则在各船舱有没有被很好遵守？</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="other-advanced-plots.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb36-2"><a href="other-advanced-plots.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(graphics)</span>
+<span id="cb36-3"><a href="other-advanced-plots.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(Titanic, <span class="at">main =</span> <span class="st">&quot;Survival on the Titanic&quot;</span>, <span class="at">color =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>感兴趣的读者还可以使用stats包中的loglin()函数拟合对数线性模型、从统计模型的角度继续分析。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="maps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/TuozhenLiu/Advanced-Visualiztion/edit/main/03-Other-Advanced-Plots.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/TuozhenLiu/Advanced-Visualiztion/blob/main/03-Other-Advanced-Plots.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
