@@ -5,7 +5,7 @@ ggplot2
 直方图和密度曲线图
 时间序列图
 图形标注
-advanced-graphics
+maps
 maps包
 世界地图
 美国地图
