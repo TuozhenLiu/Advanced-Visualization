@@ -32,3 +32,9 @@ pre code {
   text-align: right;
   padding-right: 5em;
 }
+
+body > div > div.book-summary > nav > ul > li:nth-child(10) > p > a{
+  display: inline !important;
+  padding: 0px !important;
+}
+

@@ -45,4 +45,3 @@ layout
 javascript
 visualization-project
 industry-analysis
-merry-christmas
