@@ -1,7 +1,0 @@
-"0","data_grid_js <- runpkg::download_files(
-  ""react-data-grid"", 
-  ""dist/react-data-grid.min.js""
-)
-"
-"2","Error in loadNamespace(x) : there is no package called ‘runpkg’
-"
