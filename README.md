@@ -1,4 +1,4 @@
-# Advanced-Visualiztion
+# Advanced-Visualization
  
 <img align="right" src="./docs/fig/tree1.png" width="300px"/>
 
@@ -8,7 +8,7 @@
 
 Our Presentation Homepage   👇
 
-- https://tuozhenliu.github.io/Advanced-Visualiztion
+- https://tuozhenliu.github.io/Advanced-Visualization
 
 - powered by bookdown and github pages
 
