@@ -1,6 +1,8 @@
 # Advanced-Visualiztion
  
-2021秋 ｜ 大数据分析统计基础 ｜ 第七组 Presentation
+<img align="right" src="./docs/fig/tree1.png" width="300px"/>
+
+2021 Christmas ｜ 大数据分析统计基础 ｜ 第七组 Presentation
 
 <br>
 
