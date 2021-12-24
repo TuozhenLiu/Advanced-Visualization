@@ -202,7 +202,7 @@ remap(flight, title = "航迹图", theme = get_theme("Dark"))
   backgroundColor: '#1b1b1b',
   color: ['gold','aqua','lime'],
   title : {
-  text: 'REmap实例数据',
+  text: '航迹图',
   subtext:'theme:Dark',
   x:'center',
   textStyle : {

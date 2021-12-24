@@ -51,13 +51,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -226,53 +219,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="maps包" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> maps包</h2>
 <p>R中的附加包 maps 是目前比较完善的地图程序包之一，maps包中核心的函数为<code>map()</code>，该函数的两个主要参数为地图数据库<strong>database</strong>和地图区域<strong>region</strong>，地图数据库中包含了所有区域的经纬度数据以及相应的区域名称，在指定一个数据库和一系列区域名称之后，这些区域的地图便可由<code>map()</code>生成。</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="maps.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
-<span id="cb37-2"><a href="maps.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">usage</span>(map, <span class="at">w =</span> <span class="fl">0.8</span>)</span>
-<span id="cb37-3"><a href="maps.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(</span>
-<span id="cb37-4"><a href="maps.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;world&quot;</span>, <span class="at">regions =</span> <span class="st">&quot;.&quot;</span>, <span class="at">exact =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb37-5"><a href="maps.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">boundary =</span> <span class="cn">TRUE</span>, <span class="at">interior =</span> <span class="cn">TRUE</span>, <span class="at">projection =</span> <span class="st">&quot;&quot;</span>, <span class="at">parameters =</span> <span class="cn">NULL</span>,</span>
-<span id="cb37-6"><a href="maps.html#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">orientation =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="dv">1</span>, <span class="at">plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb37-7"><a href="maps.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">add =</span> <span class="cn">FALSE</span>, <span class="at">namesonly =</span> <span class="cn">FALSE</span>, <span class="at">xlim =</span> <span class="cn">NULL</span>, <span class="at">ylim =</span> <span class="cn">NULL</span>,</span>
-<span id="cb37-8"><a href="maps.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">wrap =</span> <span class="cn">FALSE</span>, <span class="at">resolution =</span> <span class="cf">if</span> (plot) <span class="dv">1</span> <span class="cf">else</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
-<span id="cb37-9"><a href="maps.html#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="fu">par</span>(<span class="st">&quot;bg&quot;</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fu">par</span>(<span class="st">&quot;mar&quot;</span>)[<span class="dv">3</span>], <span class="fl">0.1</span>),</span>
-<span id="cb37-10"><a href="maps.html#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="fl">0.01</span>, ...</span>
-<span id="cb37-11"><a href="maps.html#cb37-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="maps.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb1-2"><a href="maps.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">usage</span>(map, <span class="at">w =</span> <span class="fl">0.8</span>)</span>
+<span id="cb1-3"><a href="maps.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(</span>
+<span id="cb1-4"><a href="maps.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;world&quot;</span>, <span class="at">regions =</span> <span class="st">&quot;.&quot;</span>, <span class="at">exact =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-5"><a href="maps.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">boundary =</span> <span class="cn">TRUE</span>, <span class="at">interior =</span> <span class="cn">TRUE</span>, <span class="at">projection =</span> <span class="st">&quot;&quot;</span>, <span class="at">parameters =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-6"><a href="maps.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">orientation =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="dv">1</span>, <span class="at">plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-7"><a href="maps.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">add =</span> <span class="cn">FALSE</span>, <span class="at">namesonly =</span> <span class="cn">FALSE</span>, <span class="at">xlim =</span> <span class="cn">NULL</span>, <span class="at">ylim =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-8"><a href="maps.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">wrap =</span> <span class="cn">FALSE</span>, <span class="at">resolution =</span> <span class="cf">if</span> (plot) <span class="dv">1</span> <span class="cf">else</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb1-9"><a href="maps.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="fu">par</span>(<span class="st">&quot;bg&quot;</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fu">par</span>(<span class="st">&quot;mar&quot;</span>)[<span class="dv">3</span>], <span class="fl">0.1</span>),</span>
+<span id="cb1-10"><a href="maps.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="fl">0.01</span>, ...</span>
+<span id="cb1-11"><a href="maps.html#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div id="世界地图" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> 世界地图</h3>
 <p>通过运行如下代码得到世界地图。maps包里面还包括了美国、新西兰、意大利等国的地图。</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="maps.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
-<span id="cb38-2"><a href="maps.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
-<span id="cb38-3"><a href="maps.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;world&quot;</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">topo.colors</span>(<span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">60</span>, <span class="dv">90</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb38-4"><a href="maps.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;世界地图&quot;</span>) <span class="co"># 添加标题</span></span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="maps.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb2-2"><a href="maps.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb2-3"><a href="maps.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;world&quot;</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">topo.colors</span>(<span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">60</span>, <span class="dv">90</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb2-4"><a href="maps.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;世界地图&quot;</span>) <span class="co"># 添加标题</span></span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="美国地图" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> 美国地图</h3>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="maps.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;state&quot;</span>,</span>
-<span id="cb39-2"><a href="maps.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">heat.colors</span>(<span class="dv">10</span>),</span>
-<span id="cb39-3"><a href="maps.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>)</span>
-<span id="cb39-4"><a href="maps.html#cb39-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb39-5"><a href="maps.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
-<span id="cb39-6"><a href="maps.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;美国地图&quot;</span>)</span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="maps.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;state&quot;</span>,</span>
+<span id="cb3-2"><a href="maps.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">heat.colors</span>(<span class="dv">10</span>),</span>
+<span id="cb3-3"><a href="maps.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>)</span>
+<span id="cb3-4"><a href="maps.html#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="maps.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb3-6"><a href="maps.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;美国地图&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>可以根据需要绘制某国地图或者美国某几个州的地图，只需在map()函数中添加选项例如<code>region = c('new york', 'new jersey', 'penn')</code> 即可。</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="maps.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;state&quot;</span>,</span>
-<span id="cb40-2"><a href="maps.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">c</span>(<span class="st">&quot;new york&quot;</span>, <span class="st">&quot;new jersey&quot;</span>, <span class="st">&quot;penn&quot;</span>),</span>
-<span id="cb40-3"><a href="maps.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
-<span id="cb40-4"><a href="maps.html#cb40-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb40-5"><a href="maps.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
-<span id="cb40-6"><a href="maps.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;美国三州地图&quot;</span>)</span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="maps.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;state&quot;</span>,</span>
+<span id="cb4-2"><a href="maps.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">c</span>(<span class="st">&quot;new york&quot;</span>, <span class="st">&quot;new jersey&quot;</span>, <span class="st">&quot;penn&quot;</span>),</span>
+<span id="cb4-3"><a href="maps.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb4-4"><a href="maps.html#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-5"><a href="maps.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb4-6"><a href="maps.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;美国三州地图&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="中国地图" class="section level3" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> 中国地图</h3>
 <p>在国家基础地理信息中心的网站上提供了免费的GIS数据下载，里面包括了国界与省界数据，使用R的maptools包的<code>readShapePoly()</code>或rgdal包的<code>readOGR()</code>可以读取shp文件。</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="maps.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptools)</span>
-<span id="cb41-2"><a href="maps.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
-<span id="cb41-3"><a href="maps.html#cb41-3" aria-hidden="true" tabindex="-1"></a>china <span class="ot">&lt;-</span> <span class="fu">readOGR</span>(<span class="st">&quot;china/bou2_4p.shp&quot;</span>)</span>
-<span id="cb41-4"><a href="maps.html#cb41-4" aria-hidden="true" tabindex="-1"></a>china<span class="sc">@</span>data<span class="sc">$</span>NAME <span class="ot">&lt;-</span> <span class="fu">iconv</span>(china<span class="sc">@</span>data<span class="sc">$</span>NAME, <span class="st">&quot;GBK&quot;</span>, <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="maps.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptools)</span>
+<span id="cb5-2"><a href="maps.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb5-3"><a href="maps.html#cb5-3" aria-hidden="true" tabindex="-1"></a>china <span class="ot">&lt;-</span> <span class="fu">readOGR</span>(<span class="st">&quot;china/bou2_4p.shp&quot;</span>)</span>
+<span id="cb5-4"><a href="maps.html#cb5-4" aria-hidden="true" tabindex="-1"></a>china<span class="sc">@</span>data<span class="sc">$</span>NAME <span class="ot">&lt;-</span> <span class="fu">iconv</span>(china<span class="sc">@</span>data<span class="sc">$</span>NAME, <span class="st">&quot;GBK&quot;</span>, <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <p>该数据包含了中国925个地区的的面积、周长、编号、行政区名称等信息。</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="maps.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(china<span class="sc">@</span>data)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="maps.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(china<span class="sc">@</span>data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    925 obs. of  7 variables:
 ##  $ AREA      : num  54.4 129.1 175.6 21.3 15.6 ...
 ##  $ PERIMETER : num  68.5 129.9 84.9 41.2 38.4 ...
@@ -282,28 +275,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ ADCODE99  : int  230000 150000 650000 220000 210000 620000 130000 110000 210000 210000 ...
 ##  $ NAME      : chr  &quot;黑龙江省&quot; &quot;内蒙古自治区&quot; &quot;新疆维吾尔自治区&quot; &quot;吉林省&quot; ...</code></pre>
 <p>在绘制地图时，每一个省市自治区或岛屿都是用一个多边形来表示的。GIS数据提供了每一个行政区的多边形逐点的坐标，然后R通过顺次连接这些坐标，就绘制出了一个多边形区域。</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="maps.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china)</span>
-<span id="cb44-2"><a href="maps.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
-<span id="cb44-3"><a href="maps.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;中国地图&quot;</span>)</span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="maps.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china)</span>
+<span id="cb8-2"><a href="maps.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb8-3"><a href="maps.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;中国地图&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>plot命令中的col参数在本例中应该是一个长度为 925 的向量，其第 i 个分量的取值就代表了地图中第 i 个多边形的颜色。</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="maps.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">924</span><span class="sc">:</span><span class="dv">0</span> <span class="sc">/</span> <span class="dv">924</span>))</span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="maps.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">924</span><span class="sc">:</span><span class="dv">0</span> <span class="sc">/</span> <span class="dv">924</span>))</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>也可以通过查找相应的行政区对应的行名对col参数进行赋值，对相应地区进行着色：</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="maps.html#cb46-1" aria-hidden="true" tabindex="-1"></a>getColor <span class="ot">&lt;-</span> <span class="cf">function</span>(mapdata, provname, provcol, othercol) {</span>
-<span id="cb46-2"><a href="maps.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) <span class="fu">ifelse</span>(x <span class="sc">%in%</span> y, <span class="fu">which</span>(y <span class="sc">==</span> x), <span class="dv">0</span>)</span>
-<span id="cb46-3"><a href="maps.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  colIndex <span class="ot">&lt;-</span> <span class="fu">sapply</span>(mapdata<span class="sc">@</span>data<span class="sc">$</span>NAME, f, provname)</span>
-<span id="cb46-4"><a href="maps.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  col <span class="ot">&lt;-</span> <span class="fu">c</span>(othercol, provcol)[colIndex <span class="sc">+</span> <span class="dv">1</span>]</span>
-<span id="cb46-5"><a href="maps.html#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(col)</span>
-<span id="cb46-6"><a href="maps.html#cb46-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="maps.html#cb10-1" aria-hidden="true" tabindex="-1"></a>getColor <span class="ot">&lt;-</span> <span class="cf">function</span>(mapdata, provname, provcol, othercol) {</span>
+<span id="cb10-2"><a href="maps.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) <span class="fu">ifelse</span>(x <span class="sc">%in%</span> y, <span class="fu">which</span>(y <span class="sc">==</span> x), <span class="dv">0</span>)</span>
+<span id="cb10-3"><a href="maps.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  colIndex <span class="ot">&lt;-</span> <span class="fu">sapply</span>(mapdata<span class="sc">@</span>data<span class="sc">$</span>NAME, f, provname)</span>
+<span id="cb10-4"><a href="maps.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  col <span class="ot">&lt;-</span> <span class="fu">c</span>(othercol, provcol)[colIndex <span class="sc">+</span> <span class="dv">1</span>]</span>
+<span id="cb10-5"><a href="maps.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(col)</span>
+<span id="cb10-6"><a href="maps.html#cb10-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>其中<strong>mapdata</strong>是存放地图数据的变量，<strong>provname</strong>是需要改变颜色的地区的名称，<strong>provcol</strong>是对应于<strong>provname</strong>的代表颜色的向量，<strong>othercol</strong>是其它地区的颜色。举例如下：</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="maps.html#cb47-1" aria-hidden="true" tabindex="-1"></a>provname <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;北京市&quot;</span>, <span class="st">&quot;上海市&quot;</span>, <span class="st">&quot;重庆市&quot;</span>, <span class="st">&quot;福建省&quot;</span>)</span>
-<span id="cb47-2"><a href="maps.html#cb47-2" aria-hidden="true" tabindex="-1"></a>provcol <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;purple&quot;</span>)</span>
-<span id="cb47-3"><a href="maps.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">getColor</span>(china, provname, provcol, <span class="st">&quot;white&quot;</span>))</span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="maps.html#cb11-1" aria-hidden="true" tabindex="-1"></a>provname <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;北京市&quot;</span>, <span class="st">&quot;上海市&quot;</span>, <span class="st">&quot;重庆市&quot;</span>, <span class="st">&quot;福建省&quot;</span>)</span>
+<span id="cb11-2"><a href="maps.html#cb11-2" aria-hidden="true" tabindex="-1"></a>provcol <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;purple&quot;</span>)</span>
+<span id="cb11-3"><a href="maps.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">getColor</span>(china, provname, provcol, <span class="st">&quot;white&quot;</span>))</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>利用类似的方法就可以根据自己的需要对不同的区域进行着色。从国家统计局获取我国各地区的人口数据，然后根据人口的多少对各省份进行着色。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="maps.html#cb48-1" aria-hidden="true" tabindex="-1"></a>data_population <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/population.csv&quot;</span>)</span>
-<span id="cb48-2"><a href="maps.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_population[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="maps.html#cb12-1" aria-hidden="true" tabindex="-1"></a>data_population <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/population.csv&quot;</span>)</span>
+<span id="cb12-2"><a href="maps.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_population[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
 <pre><code>##       provname  pop
 ## 1       北京市 1633
 ## 2       天津市 1115
@@ -311,36 +304,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4       山西省 3393
 ## 5 内蒙古自治区 2405
 ## 6       辽宁省 4298</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="maps.html#cb50-1" aria-hidden="true" tabindex="-1"></a>provname <span class="ot">&lt;-</span> data_population<span class="sc">$</span>provname</span>
-<span id="cb50-2"><a href="maps.html#cb50-2" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> data_population<span class="sc">$</span>pop</span>
-<span id="cb50-3"><a href="maps.html#cb50-3" aria-hidden="true" tabindex="-1"></a>provcol <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="at">red =</span> <span class="dv">1</span> <span class="sc">-</span> pop <span class="sc">/</span> <span class="fu">max</span>(pop) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">green =</span> <span class="dv">1</span> <span class="sc">-</span> pop <span class="sc">/</span> <span class="fu">max</span>(pop) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">0</span>)</span>
-<span id="cb50-4"><a href="maps.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">getColor</span>(china, provname, provcol, <span class="st">&quot;white&quot;</span>), <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="maps.html#cb14-1" aria-hidden="true" tabindex="-1"></a>provname <span class="ot">&lt;-</span> data_population<span class="sc">$</span>provname</span>
+<span id="cb14-2"><a href="maps.html#cb14-2" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> data_population<span class="sc">$</span>pop</span>
+<span id="cb14-3"><a href="maps.html#cb14-3" aria-hidden="true" tabindex="-1"></a>provcol <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="at">red =</span> <span class="dv">1</span> <span class="sc">-</span> pop <span class="sc">/</span> <span class="fu">max</span>(pop) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">green =</span> <span class="dv">1</span> <span class="sc">-</span> pop <span class="sc">/</span> <span class="fu">max</span>(pop) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">0</span>)</span>
+<span id="cb14-4"><a href="maps.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="fu">getColor</span>(china, provname, provcol, <span class="st">&quot;white&quot;</span>), <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>此外，还可以利用这个参数画出国内某一部分的地图，例如绘制福建、浙江、江西和广东四个东南地区省份的地图如下：</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="maps.html#cb51-1" aria-hidden="true" tabindex="-1"></a>southeast <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;福建省&quot;</span>, <span class="st">&quot;浙江省&quot;</span>, <span class="st">&quot;江西省&quot;</span>, <span class="st">&quot;广东省&quot;</span>)</span>
-<span id="cb51-2"><a href="maps.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china,</span>
-<span id="cb51-3"><a href="maps.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">getColor</span>(china, southeast, <span class="fu">rep</span>(<span class="st">&quot;blue&quot;</span>, <span class="dv">4</span>), <span class="st">&quot;white&quot;</span>), <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb51-4"><a href="maps.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb51-5"><a href="maps.html#cb51-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="maps.html#cb15-1" aria-hidden="true" tabindex="-1"></a>southeast <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;福建省&quot;</span>, <span class="st">&quot;浙江省&quot;</span>, <span class="st">&quot;江西省&quot;</span>, <span class="st">&quot;广东省&quot;</span>)</span>
+<span id="cb15-2"><a href="maps.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china,</span>
+<span id="cb15-3"><a href="maps.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">getColor</span>(china, southeast, <span class="fu">rep</span>(<span class="st">&quot;blue&quot;</span>, <span class="dv">4</span>), <span class="st">&quot;white&quot;</span>), <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb15-4"><a href="maps.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb15-5"><a href="maps.html#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>还可以人工将各省会的信息在地图上标记出来</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="maps.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span>
-<span id="cb52-2"><a href="maps.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
-<span id="cb52-3"><a href="maps.html#cb52-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/city.csv&quot;</span>)</span>
-<span id="cb52-4"><a href="maps.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">54</span>), <span class="at">panel.first =</span> <span class="fu">grid</span>())</span>
-<span id="cb52-5"><a href="maps.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(dat<span class="sc">$</span>jd, dat<span class="sc">$</span>wd, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">cex =</span> <span class="fl">0.6</span>)</span>
-<span id="cb52-6"><a href="maps.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(dat<span class="sc">$</span>jd, dat<span class="sc">$</span>wd, dat[, <span class="dv">2</span>],</span>
-<span id="cb52-7"><a href="maps.html#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">0.7</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.7</span>),</span>
-<span id="cb52-8"><a href="maps.html#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="fu">c</span>(</span>
-<span id="cb52-9"><a href="maps.html#cb52-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>,</span>
-<span id="cb52-10"><a href="maps.html#cb52-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span></span>
-<span id="cb52-11"><a href="maps.html#cb52-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb52-12"><a href="maps.html#cb52-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb52-13"><a href="maps.html#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
-<span id="cb52-14"><a href="maps.html#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
-<span id="cb52-15"><a href="maps.html#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
-<span id="cb52-16"><a href="maps.html#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="maps.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span>
+<span id="cb16-2"><a href="maps.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family =</span> <span class="st">&quot;STKaiti&quot;</span>)</span>
+<span id="cb16-3"><a href="maps.html#cb16-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/city.csv&quot;</span>)</span>
+<span id="cb16-4"><a href="maps.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(china, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">54</span>), <span class="at">panel.first =</span> <span class="fu">grid</span>())</span>
+<span id="cb16-5"><a href="maps.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(dat<span class="sc">$</span>jd, dat<span class="sc">$</span>wd, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">cex =</span> <span class="fl">0.6</span>)</span>
+<span id="cb16-6"><a href="maps.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(dat<span class="sc">$</span>jd, dat<span class="sc">$</span>wd, dat[, <span class="dv">2</span>],</span>
+<span id="cb16-7"><a href="maps.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">0.7</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.7</span>),</span>
+<span id="cb16-8"><a href="maps.html#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="fu">c</span>(</span>
+<span id="cb16-9"><a href="maps.html#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>,</span>
+<span id="cb16-10"><a href="maps.html#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span></span>
+<span id="cb16-11"><a href="maps.html#cb16-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-12"><a href="maps.html#cb16-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-13"><a href="maps.html#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
+<span id="cb16-14"><a href="maps.html#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
+<span id="cb16-15"><a href="maps.html#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span>
+<span id="cb16-16"><a href="maps.html#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p><img src="pre_bookdown_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 </div>
 <div id="remap包" class="section level2" number="4.2">
@@ -352,10 +345,10 @@ install_github(&#39;lchiffon/REmap&#39;)</code></pre>
 <div id="获取经纬度信息" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> 获取经纬度信息</h3>
 <p>REmap是基于百度地图构建的，因此需要在百度地图开放平台创建项目获取AK，配置到REmap中。</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="maps.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(REmap)</span>
-<span id="cb54-2"><a href="maps.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">remap.ak =</span> <span class="st">&quot;ZAIIlGEpPKoBVF5M4GLEuN6G5T6AQpCn&quot;</span>) <span class="co"># 配置百度地图API</span></span>
-<span id="cb54-3"><a href="maps.html#cb54-3" aria-hidden="true" tabindex="-1"></a>place <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;中央财经大学学院南路校区&quot;</span>, <span class="st">&quot;中央财经大学沙河校区&quot;</span>)</span>
-<span id="cb54-4"><a href="maps.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_geo_position</span>(place)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="maps.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(REmap)</span>
+<span id="cb18-2"><a href="maps.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">remap.ak =</span> <span class="st">&quot;ZAIIlGEpPKoBVF5M4GLEuN6G5T6AQpCn&quot;</span>) <span class="co"># 配置百度地图API</span></span>
+<span id="cb18-3"><a href="maps.html#cb18-3" aria-hidden="true" tabindex="-1"></a>place <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;中央财经大学学院南路校区&quot;</span>, <span class="st">&quot;中央财经大学沙河校区&quot;</span>)</span>
+<span id="cb18-4"><a href="maps.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_geo_position</span>(place)</span></code></pre></div>
 <pre><code>##        lon      lat                     city
 ## 1 116.3492 39.96521 中央财经大学学院南路校区
 ## 2 116.2883 40.17780     中央财经大学沙河校区</code></pre>
@@ -363,7 +356,7 @@ install_github(&#39;lchiffon/REmap&#39;)</code></pre>
 <div id="获取各省市的市区级行政单位名称" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> 获取各省（市）的市（区）级行政单位名称</h3>
 <p>问：北京市究竟下辖哪几个区呢？</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="maps.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mapNames</span>(<span class="st">&quot;北京&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="maps.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mapNames</span>(<span class="st">&quot;北京&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;密云县&quot;   &quot;怀柔区&quot;   &quot;房山区&quot;   &quot;延庆县&quot;   &quot;门头沟区&quot; &quot;昌平区&quot;  
 ##  [7] &quot;大兴区&quot;   &quot;顺义区&quot;   &quot;平谷区&quot;   &quot;通州区&quot;   &quot;朝阳区&quot;   &quot;海淀区&quot;  
 ## [13] &quot;丰台区&quot;   &quot;石景山区&quot; &quot;西城区&quot;   &quot;东城区&quot;   &quot;宣武区&quot;   &quot;崇文区&quot;</code></pre>
@@ -372,13 +365,13 @@ install_github(&#39;lchiffon/REmap&#39;)</code></pre>
 <h3><span class="header-section-number">4.2.3</span> 地图可视化</h3>
 <div id="remap函数绘制航迹图" class="section level4" number="4.2.3.1">
 <h4><span class="header-section-number">4.2.3.1</span> remap函数绘制航迹图</h4>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="maps.html#cb58-1" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;北京&quot;</span>, <span class="dv">10</span>)</span>
-<span id="cb58-2"><a href="maps.html#cb58-2" aria-hidden="true" tabindex="-1"></a>destination <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb58-3"><a href="maps.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;上海&quot;</span>, <span class="st">&quot;广州&quot;</span>, <span class="st">&quot;大连&quot;</span>, <span class="st">&quot;南宁&quot;</span>, <span class="st">&quot;南昌&quot;</span>,</span>
-<span id="cb58-4"><a href="maps.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;拉萨&quot;</span>, <span class="st">&quot;长春&quot;</span>, <span class="st">&quot;包头&quot;</span>, <span class="st">&quot;重庆&quot;</span>, <span class="st">&quot;常州&quot;</span></span>
-<span id="cb58-5"><a href="maps.html#cb58-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb58-6"><a href="maps.html#cb58-6" aria-hidden="true" tabindex="-1"></a>flight <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(origin, destination)</span>
-<span id="cb58-7"><a href="maps.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">remap</span>(flight, <span class="at">title =</span> <span class="st">&quot;航迹图&quot;</span>, <span class="at">theme =</span> <span class="fu">get_theme</span>(<span class="st">&quot;Dark&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="maps.html#cb22-1" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;北京&quot;</span>, <span class="dv">10</span>)</span>
+<span id="cb22-2"><a href="maps.html#cb22-2" aria-hidden="true" tabindex="-1"></a>destination <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb22-3"><a href="maps.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;上海&quot;</span>, <span class="st">&quot;广州&quot;</span>, <span class="st">&quot;大连&quot;</span>, <span class="st">&quot;南宁&quot;</span>, <span class="st">&quot;南昌&quot;</span>,</span>
+<span id="cb22-4"><a href="maps.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;拉萨&quot;</span>, <span class="st">&quot;长春&quot;</span>, <span class="st">&quot;包头&quot;</span>, <span class="st">&quot;重庆&quot;</span>, <span class="st">&quot;常州&quot;</span></span>
+<span id="cb22-5"><a href="maps.html#cb22-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-6"><a href="maps.html#cb22-6" aria-hidden="true" tabindex="-1"></a>flight <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(origin, destination)</span>
+<span id="cb22-7"><a href="maps.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">remap</span>(flight, <span class="at">title =</span> <span class="st">&quot;航迹图&quot;</span>, <span class="at">theme =</span> <span class="fu">get_theme</span>(<span class="st">&quot;Dark&quot;</span>))</span></code></pre></div>
 <script src="./js/echarts.js"></script>
 <script src = "./js/echarts-all.js"></script>
 <div id="remap" style="width: 700px; height:466px;"></div>
@@ -390,7 +383,7 @@ install_github(&#39;lchiffon/REmap&#39;)</code></pre>
   backgroundColor: '#1b1b1b',
   color: ['gold','aqua','lime'],
   title : {
-  text: 'REmap实例数据',
+  text: '航迹图',
   subtext:'theme:Dark',
   x:'center',
   textStyle : {
@@ -520,19 +513,19 @@ myChart.setOption(option);
 <strong>lineColor</strong>: lineColor为线条颜色，默认是随机，也可自行设置，如’red’。<br />
 <strong>BackgroundColor</strong>:地图外背景颜色<br />
 <strong>RegionColor</strong>:地图中各区域颜色</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="maps.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_theme</span>(</span>
-<span id="cb59-2"><a href="maps.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="st">&quot;Dark&quot;</span>,</span>
-<span id="cb59-3"><a href="maps.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lineColor =</span> <span class="st">&quot;Random&quot;</span>,</span>
-<span id="cb59-4"><a href="maps.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">backgroundColor =</span> <span class="st">&quot;#1b1b1b&quot;</span>,</span>
-<span id="cb59-5"><a href="maps.html#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">titleColor =</span> <span class="st">&quot;#fff&quot;</span>,</span>
-<span id="cb59-6"><a href="maps.html#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">borderColor =</span> <span class="st">&quot;rgba(100,149,237,1)&quot;</span>,</span>
-<span id="cb59-7"><a href="maps.html#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">regionColor =</span> <span class="st">&quot;#1b1b1b&quot;</span>,</span>
-<span id="cb59-8"><a href="maps.html#cb59-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">labelShow =</span> T,</span>
-<span id="cb59-9"><a href="maps.html#cb59-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pointShow =</span> F,</span>
-<span id="cb59-10"><a href="maps.html#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">pointColor =</span> <span class="st">&quot;gold&quot;</span></span>
-<span id="cb59-11"><a href="maps.html#cb59-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="maps.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_theme</span>(</span>
+<span id="cb23-2"><a href="maps.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="st">&quot;Dark&quot;</span>,</span>
+<span id="cb23-3"><a href="maps.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lineColor =</span> <span class="st">&quot;Random&quot;</span>,</span>
+<span id="cb23-4"><a href="maps.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">backgroundColor =</span> <span class="st">&quot;#1b1b1b&quot;</span>,</span>
+<span id="cb23-5"><a href="maps.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">titleColor =</span> <span class="st">&quot;#fff&quot;</span>,</span>
+<span id="cb23-6"><a href="maps.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">borderColor =</span> <span class="st">&quot;rgba(100,149,237,1)&quot;</span>,</span>
+<span id="cb23-7"><a href="maps.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">regionColor =</span> <span class="st">&quot;#1b1b1b&quot;</span>,</span>
+<span id="cb23-8"><a href="maps.html#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">labelShow =</span> T,</span>
+<span id="cb23-9"><a href="maps.html#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pointShow =</span> F,</span>
+<span id="cb23-10"><a href="maps.html#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">pointColor =</span> <span class="st">&quot;gold&quot;</span></span>
+<span id="cb23-11"><a href="maps.html#cb23-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>例如将颜色改为亮色：</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="maps.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remap</span>(flight, <span class="at">title =</span> <span class="st">&quot;亮色航迹图&quot;</span>, <span class="at">theme =</span> <span class="fu">get_theme</span>(<span class="st">&quot;Bright&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="maps.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remap</span>(flight, <span class="at">title =</span> <span class="st">&quot;亮色航迹图&quot;</span>, <span class="at">theme =</span> <span class="fu">get_theme</span>(<span class="st">&quot;Bright&quot;</span>))</span></code></pre></div>
 <div id="main2" style="width: 700px; height:466px;"></div>
   <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
   <script src = "http://echarts.baidu.com/build/dist/echarts-all.js"></script>
@@ -689,8 +682,8 @@ myChart.setOption(option);
 <strong>minAlpha</strong>为热力点的展示阈值，对应data中的prob列，作图时各点密度会对比minAlpha，以凸显不同密度所展示的不同热力分布<br />
 <strong>opacity</strong>为透明度，调整热力图的透明度</p>
 <p>获取200个城市的PM2.5指数及经纬度，绘制热力图如下：</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="maps.html#cb62-1" aria-hidden="true" tabindex="-1"></a>air <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;data/air.csv&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb62-2"><a href="maps.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(air)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="maps.html#cb26-1" aria-hidden="true" tabindex="-1"></a>air <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;data/air.csv&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb26-2"><a href="maps.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(air)</span></code></pre></div>
 <pre><code>##        lon      lat avg_pm2_5
 ## 1 121.3857 41.05955 0.3618444
 ## 2 113.4990 22.28592 0.1763897
@@ -698,25 +691,25 @@ myChart.setOption(option);
 ## 4 114.9962 30.20217 0.3327429
 ## 5 117.5387 36.70130 0.4373493
 ## 6 129.0924 47.97323 0.1041234</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="maps.html#cb64-1" aria-hidden="true" tabindex="-1"></a>theme1 <span class="ot">&lt;-</span> <span class="fu">get_theme</span>(</span>
-<span id="cb64-2"><a href="maps.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="st">&quot;none&quot;</span>,</span>
-<span id="cb64-3"><a href="maps.html#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lineColor =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb64-4"><a href="maps.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">backgroundColor =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb64-5"><a href="maps.html#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">titleColor =</span> <span class="st">&quot;#fff&quot;</span>,</span>
-<span id="cb64-6"><a href="maps.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">borderColor =</span> <span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb64-7"><a href="maps.html#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">regionColor =</span> <span class="st">&quot;grey&quot;</span>,</span>
-<span id="cb64-8"><a href="maps.html#cb64-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">labelShow =</span> T,</span>
-<span id="cb64-9"><a href="maps.html#cb64-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pointShow =</span> F,</span>
-<span id="cb64-10"><a href="maps.html#cb64-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">pointColor =</span> <span class="st">&quot;gold&quot;</span></span>
-<span id="cb64-11"><a href="maps.html#cb64-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb64-12"><a href="maps.html#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="fu">remapH</span>(air,</span>
-<span id="cb64-13"><a href="maps.html#cb64-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">maptype =</span> <span class="st">&quot;china&quot;</span>,</span>
-<span id="cb64-14"><a href="maps.html#cb64-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> theme1,</span>
-<span id="cb64-15"><a href="maps.html#cb64-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">blurSize =</span> <span class="dv">35</span>,</span>
-<span id="cb64-16"><a href="maps.html#cb64-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
-<span id="cb64-17"><a href="maps.html#cb64-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">minAlpha =</span> <span class="fl">0.3</span>,</span>
-<span id="cb64-18"><a href="maps.html#cb64-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">opacity =</span> <span class="dv">1</span>,</span>
-<span id="cb64-19"><a href="maps.html#cb64-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="maps.html#cb28-1" aria-hidden="true" tabindex="-1"></a>theme1 <span class="ot">&lt;-</span> <span class="fu">get_theme</span>(</span>
+<span id="cb28-2"><a href="maps.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb28-3"><a href="maps.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lineColor =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb28-4"><a href="maps.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">backgroundColor =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb28-5"><a href="maps.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">titleColor =</span> <span class="st">&quot;#fff&quot;</span>,</span>
+<span id="cb28-6"><a href="maps.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">borderColor =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb28-7"><a href="maps.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">regionColor =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb28-8"><a href="maps.html#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">labelShow =</span> T,</span>
+<span id="cb28-9"><a href="maps.html#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pointShow =</span> F,</span>
+<span id="cb28-10"><a href="maps.html#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">pointColor =</span> <span class="st">&quot;gold&quot;</span></span>
+<span id="cb28-11"><a href="maps.html#cb28-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-12"><a href="maps.html#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">remapH</span>(air,</span>
+<span id="cb28-13"><a href="maps.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">maptype =</span> <span class="st">&quot;china&quot;</span>,</span>
+<span id="cb28-14"><a href="maps.html#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> theme1,</span>
+<span id="cb28-15"><a href="maps.html#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">blurSize =</span> <span class="dv">35</span>,</span>
+<span id="cb28-16"><a href="maps.html#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb28-17"><a href="maps.html#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">minAlpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb28-18"><a href="maps.html#cb28-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">opacity =</span> <span class="dv">1</span>,</span>
+<span id="cb28-19"><a href="maps.html#cb28-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div id="main3" style="width: 700px; height:466px;"></div>
   <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
   <script src = "http://echarts.baidu.com/build/dist/echarts-all.js"></script>
@@ -1008,32 +1001,32 @@ myChart.setOption(option);
 <div id="remapc绘制填充地图" class="section level4" number="4.2.3.3">
 <h4><span class="header-section-number">4.2.3.3</span> remapC绘制填充地图</h4>
 <p><code>remapC()</code>允许我们同时在一张地图上制作填充图和点图、线图。</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="maps.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remapC</span>(data,</span>
-<span id="cb65-2"><a href="maps.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">maptype =</span> <span class="st">&quot;china&quot;</span>,</span>
-<span id="cb65-3"><a href="maps.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">markLineData =</span> <span class="cn">NULL</span>,</span>
-<span id="cb65-4"><a href="maps.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">markPointData =</span> <span class="cn">NULL</span>,</span>
-<span id="cb65-5"><a href="maps.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;#1e90ff&quot;</span>, <span class="st">&quot;#f0ffff&quot;</span>),</span>
-<span id="cb65-6"><a href="maps.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">get_theme</span>(<span class="st">&quot;Bright&quot;</span>),</span>
-<span id="cb65-7"><a href="maps.html#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb65-8"><a href="maps.html#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb65-9"><a href="maps.html#cb65-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">markLineTheme =</span> <span class="fu">markLineControl</span>(),</span>
-<span id="cb65-10"><a href="maps.html#cb65-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">markPointTheme =</span> <span class="fu">markPointControl</span>(),</span>
-<span id="cb65-11"><a href="maps.html#cb65-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">geoData =</span> <span class="cn">NA</span>,</span>
-<span id="cb65-12"><a href="maps.html#cb65-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">mindata =</span> <span class="cn">NA</span>,</span>
-<span id="cb65-13"><a href="maps.html#cb65-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">maxdata =</span> <span class="cn">NA</span></span>
-<span id="cb65-14"><a href="maps.html#cb65-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="maps.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remapC</span>(data,</span>
+<span id="cb29-2"><a href="maps.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">maptype =</span> <span class="st">&quot;china&quot;</span>,</span>
+<span id="cb29-3"><a href="maps.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">markLineData =</span> <span class="cn">NULL</span>,</span>
+<span id="cb29-4"><a href="maps.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">markPointData =</span> <span class="cn">NULL</span>,</span>
+<span id="cb29-5"><a href="maps.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;#1e90ff&quot;</span>, <span class="st">&quot;#f0ffff&quot;</span>),</span>
+<span id="cb29-6"><a href="maps.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">get_theme</span>(<span class="st">&quot;Bright&quot;</span>),</span>
+<span id="cb29-7"><a href="maps.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb29-8"><a href="maps.html#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb29-9"><a href="maps.html#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">markLineTheme =</span> <span class="fu">markLineControl</span>(),</span>
+<span id="cb29-10"><a href="maps.html#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">markPointTheme =</span> <span class="fu">markPointControl</span>(),</span>
+<span id="cb29-11"><a href="maps.html#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">geoData =</span> <span class="cn">NA</span>,</span>
+<span id="cb29-12"><a href="maps.html#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">mindata =</span> <span class="cn">NA</span>,</span>
+<span id="cb29-13"><a href="maps.html#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">maxdata =</span> <span class="cn">NA</span></span>
+<span id="cb29-14"><a href="maps.html#cb29-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>主要参数：<br />
 <strong>data</strong>为需要的原始数据框格式数据，共2列，第一列为省份或者城市名称，第二列为对应的数值，数值大小将决定地图颜色深浅。<br />
 <strong>maptype</strong>为地图类型设置，可选world、china或者中国省份名称<br />
 <strong>color</strong>为热力图渐变颜色，默认为2个颜色，第一个为终止色，第二个为初始色<br />
 <strong>mindata</strong>与<strong>maxdata</strong>可以设置颜色极端点对应数据的上下限（默认是使用data中的数据最大值最小值作为两端极值）。</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="maps.html#cb66-1" aria-hidden="true" tabindex="-1"></a>province <span class="ot">&lt;-</span> <span class="fu">mapNames</span>(<span class="st">&quot;china&quot;</span>) <span class="co"># 全国省份</span></span>
-<span id="cb66-2"><a href="maps.html#cb66-2" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">34</span>, <span class="dv">100</span>, <span class="dv">30</span>) <span class="co"># 随机生成分省值</span></span>
-<span id="cb66-3"><a href="maps.html#cb66-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(province, value) <span class="co"># 合成数据框作图数据</span></span>
-<span id="cb66-4"><a href="maps.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="fu">remapC</span>(mydata,</span>
-<span id="cb66-5"><a href="maps.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">maptype =</span> <span class="st">&quot;China&quot;</span>, <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb66-6"><a href="maps.html#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;全国分省图&quot;</span></span>
-<span id="cb66-7"><a href="maps.html#cb66-7" aria-hidden="true" tabindex="-1"></a>) <span class="co"># 制作等级图</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="maps.html#cb30-1" aria-hidden="true" tabindex="-1"></a>province <span class="ot">&lt;-</span> <span class="fu">mapNames</span>(<span class="st">&quot;china&quot;</span>) <span class="co"># 全国省份</span></span>
+<span id="cb30-2"><a href="maps.html#cb30-2" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">34</span>, <span class="dv">100</span>, <span class="dv">30</span>) <span class="co"># 随机生成分省值</span></span>
+<span id="cb30-3"><a href="maps.html#cb30-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(province, value) <span class="co"># 合成数据框作图数据</span></span>
+<span id="cb30-4"><a href="maps.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">remapC</span>(mydata,</span>
+<span id="cb30-5"><a href="maps.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">maptype =</span> <span class="st">&quot;China&quot;</span>, <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb30-6"><a href="maps.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;全国分省图&quot;</span></span>
+<span id="cb30-7"><a href="maps.html#cb30-7" aria-hidden="true" tabindex="-1"></a>) <span class="co"># 制作等级图</span></span></code></pre></div>
 <div id="main4" style="width: 700px; height:466px;"></div>
   <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
   <script src = "http://echarts.baidu.com/build/dist/echarts-all.js"></script>
@@ -1147,26 +1140,26 @@ myChart.setOption(option);
   myChart.setOption(optionID_20211223002124_118480);
   </script>
 <p>模拟出广东省回流各省的人口数，使用填色地图表示人流规模，使用动态流向线表示回流最大的前10个省份。</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="maps.html#cb67-1" aria-hidden="true" tabindex="-1"></a>province <span class="ot">&lt;-</span> <span class="fu">mapNames</span>(<span class="st">&quot;china&quot;</span>) <span class="co"># 全国省份</span></span>
-<span id="cb67-2"><a href="maps.html#cb67-2" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">34</span>, <span class="dv">1000</span>, <span class="dv">30</span>), <span class="dv">0</span>) <span class="co"># 随机生成分省值</span></span>
-<span id="cb67-3"><a href="maps.html#cb67-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(province, value) <span class="co"># 合并数据</span></span>
-<span id="cb67-4"><a href="maps.html#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-5"><a href="maps.html#cb67-5" aria-hidden="true" tabindex="-1"></a>lableper <span class="ot">&lt;-</span> mydata[<span class="fu">order</span>(mydata[, <span class="st">&quot;value&quot;</span>], <span class="at">decreasing =</span> T), ][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span>
-<span id="cb67-6"><a href="maps.html#cb67-6" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;广州&quot;</span>, <span class="fu">length</span>(lableper))</span>
-<span id="cb67-7"><a href="maps.html#cb67-7" aria-hidden="true" tabindex="-1"></a>destination <span class="ot">&lt;-</span> lableper<span class="sc">$</span>province</span>
-<span id="cb67-8"><a href="maps.html#cb67-8" aria-hidden="true" tabindex="-1"></a>line_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(origin, destination)</span>
-<span id="cb67-9"><a href="maps.html#cb67-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-10"><a href="maps.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="fu">remapC</span>(mydata,</span>
-<span id="cb67-11"><a href="maps.html#cb67-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;广东省人口迁徙地图&quot;</span>,</span>
-<span id="cb67-12"><a href="maps.html#cb67-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">get_theme</span>(<span class="st">&quot;Dark&quot;</span>),</span>
-<span id="cb67-13"><a href="maps.html#cb67-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;#CD0000&quot;</span>, <span class="st">&quot;#FFEC8B&quot;</span>),</span>
-<span id="cb67-14"><a href="maps.html#cb67-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">markLineData =</span> line_data,</span>
-<span id="cb67-15"><a href="maps.html#cb67-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">markLineTheme =</span> <span class="fu">markLineControl</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">lineWidth =</span> <span class="dv">2</span>, <span class="at">lineType =</span> <span class="st">&quot;dashed&quot;</span>),</span>
-<span id="cb67-16"><a href="maps.html#cb67-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">markPointData =</span> line_data[<span class="dv">2</span>],</span>
-<span id="cb67-17"><a href="maps.html#cb67-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">markPointTheme =</span> <span class="fu">markPointControl</span>(</span>
-<span id="cb67-18"><a href="maps.html#cb67-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">symbolSize =</span> <span class="dv">13</span>, <span class="at">effect =</span> T, <span class="at">effectType =</span> <span class="st">&quot;scale&quot;</span>,</span>
-<span id="cb67-19"><a href="maps.html#cb67-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;white&quot;</span></span>
-<span id="cb67-20"><a href="maps.html#cb67-20" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="maps.html#cb31-1" aria-hidden="true" tabindex="-1"></a>province <span class="ot">&lt;-</span> <span class="fu">mapNames</span>(<span class="st">&quot;china&quot;</span>) <span class="co"># 全国省份</span></span>
+<span id="cb31-2"><a href="maps.html#cb31-2" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">34</span>, <span class="dv">1000</span>, <span class="dv">30</span>), <span class="dv">0</span>) <span class="co"># 随机生成分省值</span></span>
+<span id="cb31-3"><a href="maps.html#cb31-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(province, value) <span class="co"># 合并数据</span></span>
+<span id="cb31-4"><a href="maps.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="maps.html#cb31-5" aria-hidden="true" tabindex="-1"></a>lableper <span class="ot">&lt;-</span> mydata[<span class="fu">order</span>(mydata[, <span class="st">&quot;value&quot;</span>], <span class="at">decreasing =</span> T), ][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span>
+<span id="cb31-6"><a href="maps.html#cb31-6" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;广州&quot;</span>, <span class="fu">length</span>(lableper))</span>
+<span id="cb31-7"><a href="maps.html#cb31-7" aria-hidden="true" tabindex="-1"></a>destination <span class="ot">&lt;-</span> lableper<span class="sc">$</span>province</span>
+<span id="cb31-8"><a href="maps.html#cb31-8" aria-hidden="true" tabindex="-1"></a>line_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(origin, destination)</span>
+<span id="cb31-9"><a href="maps.html#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="maps.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">remapC</span>(mydata,</span>
+<span id="cb31-11"><a href="maps.html#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;广东省人口迁徙地图&quot;</span>,</span>
+<span id="cb31-12"><a href="maps.html#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">get_theme</span>(<span class="st">&quot;Dark&quot;</span>),</span>
+<span id="cb31-13"><a href="maps.html#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;#CD0000&quot;</span>, <span class="st">&quot;#FFEC8B&quot;</span>),</span>
+<span id="cb31-14"><a href="maps.html#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">markLineData =</span> line_data,</span>
+<span id="cb31-15"><a href="maps.html#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">markLineTheme =</span> <span class="fu">markLineControl</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">lineWidth =</span> <span class="dv">2</span>, <span class="at">lineType =</span> <span class="st">&quot;dashed&quot;</span>),</span>
+<span id="cb31-16"><a href="maps.html#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">markPointData =</span> line_data[<span class="dv">2</span>],</span>
+<span id="cb31-17"><a href="maps.html#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">markPointTheme =</span> <span class="fu">markPointControl</span>(</span>
+<span id="cb31-18"><a href="maps.html#cb31-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">symbolSize =</span> <span class="dv">13</span>, <span class="at">effect =</span> T, <span class="at">effectType =</span> <span class="st">&quot;scale&quot;</span>,</span>
+<span id="cb31-19"><a href="maps.html#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb31-20"><a href="maps.html#cb31-20" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <div id="main5" style="width: 700px; height:466px;"></div>
   <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
   <script src = "http://echarts.baidu.com/build/dist/echarts-all.js"></script>
