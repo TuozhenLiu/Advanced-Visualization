@@ -1,8 +1,8 @@
 book_filename: "pre_bookdown"
 output_dir: docs
 delete_merged_file: true
-edit: https://github.com/TuozhenLiu/Advanced-Visualiztion/edit/main/%s
-view: https://github.com/TuozhenLiu/Advanced-Visualiztion/blob/main/%s
+edit: https://github.com/TuozhenLiu/Advanced-Visualization/edit/main/%s
+view: https://github.com/TuozhenLiu/Advanced-Visualization/blob/main/%s
 language:
   ui:
     chapter_name: "Chapter "
